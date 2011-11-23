@@ -149,7 +149,7 @@ public class Disease
      *  true if it was successful
      *  false if disease is eradicated or pile is less than 1; unsuccessful add
      */
-    public boolean addOneToBoard()
+    public boolean addToBoard()
     {
         if (eradicated || pile < 1)
         {
@@ -178,7 +178,7 @@ public class Disease
     {        
         for (int i = 0; i < num; i++)
         {
-            if(!addOneToBoard())
+            if(!addToBoard())
             {
                 return false;
             }
@@ -199,7 +199,7 @@ public class Disease
      * @exception IllegalStateException
      *  There are no disease counters of the board
      */
-    public void removeOneFromBoard()
+    public void removeFromBoard()
     {
         if (numOnBoard < 1)
         {
@@ -234,7 +234,7 @@ public class Disease
     {
         for (int i = 0; i < num; i++)
         {
-            removeOneFromBoard();
+            removeFromBoard();
         }
         
     }
