@@ -33,6 +33,16 @@ public class DiseaseUnitTest
         testCureAndEradicated();
     }
     
+    /**
+     * Print the disease information; 
+     *  color, imgFile,numOnBoard,Pile,Cure, and eradicated
+     * @precondition
+     *  diseaseToPrint is not Null
+     * @param diseaseToPrint 
+     *  The disease whose information to print
+     * @postcondition
+     *  diseaseToPrint's information has been printed to the screen
+     */
     private static void PrintDiseaseInfo(Disease diseaseToPrint)
     {
         System.out.println(diseaseToPrint.getColor() + "Disease:");
@@ -139,6 +149,14 @@ public class DiseaseUnitTest
         System.out.println("--- END CREATING DISEASES ---\n");
     }
 
+    /**
+     * Test the getters
+     * @precondition
+     *  redDisease, blueDisease, yellowDisease, and blackDisease are not Null
+     * @postcondition
+     *  redDisease, blueDisease, yellowDisease, and blackDisease have been
+     *  printed to the screen testing their getters
+     */
     private static void testGetters()
     {
         System.out.println("--- TEST GETTERS ---\n");
@@ -151,12 +169,20 @@ public class DiseaseUnitTest
         System.out.println("--- END TEST GETTERS ---\n");
     }
 
+    /**
+     * Test the addToBoard methods
+     * @precondition
+     *  redDisease, blueDisease, yellowDisease, and blackDisease are not Null
+     * @postcondition
+     *  redDisease, blueDisease, yellowDisease, and blackDisease have had 
+     *  disease counters added to them  
+     */
     private static void testAdd()
     {
         System.out.println("--- TEST ADD METHODS ---\n");
         
         System.out.println("Add one redDiseases to the Board");
-        System.out.println("Success: " + redDisease.addOneToBoard());
+        System.out.println("Success: " + redDisease.addToBoard());
         PrintDiseaseInfo(redDisease);
         
         System.out.println("Add two blueDiseases to the Board");
@@ -172,18 +198,26 @@ public class DiseaseUnitTest
         PrintDiseaseInfo(blackDisease);
         
         System.out.println("Add one more blackDisease to the Board");
-        System.out.println("Success: " + blackDisease.addOneToBoard());
+        System.out.println("Success: " + blackDisease.addToBoard());
         PrintDiseaseInfo(blackDisease);
         
         System.out.println("--- END TEST ADD METHODS ---\n");
     }
 
+    /**
+     * Test the removeFromBoard methods
+     * @precondition
+     *  redDisease, blueDisease, yellowDisease, and blackDisease are not Null
+     * @postcondition
+     *  redDisease, blueDisease, yellowDisease, and blackDisease have had 
+     *  disease counters removed from them  
+     */
     private static void testRemove()
     {
         System.out.println("--- TEST REMOVE METHODS ---\n");
         
         System.out.println("Remove one blueDisease from the board");
-        blueDisease.removeOneFromBoard();
+        blueDisease.removeFromBoard();
         PrintDiseaseInfo(blueDisease);
         
         System.out.println("Remove three yellowDiseases from the Board");
@@ -203,6 +237,14 @@ public class DiseaseUnitTest
         System.out.println("--- END TEST REMOVE METHODS ---\n");
     }
 
+    /**
+     * Test how cure and eradicated interact with disease
+     * @precondition
+     *  redDisease, blueDisease, yellowDisease, and blackDisease are not Null
+     * @postcondition
+     *  blueDisease and yellowDisease have been cured and eradicated
+     *  blackDisease has been cured
+     */
     private static void testCureAndEradicated()
     {
         System.out.println("--- TEST CURE AND ERADICATED METHODS ---\n");
@@ -212,11 +254,11 @@ public class DiseaseUnitTest
         PrintDiseaseInfo(blueDisease);
         
         System.out.println("Remove last blueDisease counter");
-        blueDisease.removeOneFromBoard();
+        blueDisease.removeFromBoard();
         PrintDiseaseInfo(blueDisease);
         
         System.out.println("Try to add one blueDisease counter");
-        System.out.println("Success: " + blueDisease.addOneToBoard());
+        System.out.println("Success: " + blueDisease.addToBoard());
         PrintDiseaseInfo(blueDisease);        
         
         System.out.println("Cure yellowDisease");
@@ -230,7 +272,7 @@ public class DiseaseUnitTest
         System.out.println("Cure blackDisease");
         blackDisease.cure();
         System.out.println("Remove one blackDisease counter");
-        blackDisease.removeOneFromBoard();
+        blackDisease.removeFromBoard();
         PrintDiseaseInfo(blackDisease);
         
         System.out.println("Remove all but one blackDisease counter");
@@ -238,7 +280,7 @@ public class DiseaseUnitTest
         PrintDiseaseInfo(blackDisease);
         
         System.out.println("Add one blackDisease counter to the Board");
-        blackDisease.addOneToBoard();
+        blackDisease.addToBoard();
         PrintDiseaseInfo(blackDisease);
         
         System.out.println("--- END TEST CURE AND ERADICATED METHODS ---\n");
