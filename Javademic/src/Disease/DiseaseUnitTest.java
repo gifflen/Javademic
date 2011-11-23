@@ -24,6 +24,25 @@ public class DiseaseUnitTest
     { 
         createDiseases();
         
+        testGetters();
+    }
+    
+    private static void PrintDiseaseInfo(Disease diseaseToPrint)
+    {
+        System.out.println(diseaseToPrint.getColor() + "Disease:");
+        System.out.println("\tColor           : " + 
+                diseaseToPrint.getColor());
+        System.out.println("\tImage File      : " + 
+                diseaseToPrint.getImgFile());
+        System.out.println("\tNumber of Board : " + 
+                diseaseToPrint.getNumOnBoard());
+        System.out.println("\tPile            : " + 
+                diseaseToPrint.getPile());
+        System.out.println("\tCured           : " + 
+                diseaseToPrint.isCured());
+        System.out.println("\tEradicated      : " + 
+                diseaseToPrint.isEradicated());
+        System.out.println("");        
     }
 
     /**
@@ -112,6 +131,18 @@ public class DiseaseUnitTest
         System.out.println("Disease testDisease created\n");
         
         System.out.println("--- END CREATING DISEASES ---\n");
+    }
+
+    private static void testGetters()
+    {
+        System.out.println("--- TEST GETTERS ---\n");
+        
+        PrintDiseaseInfo(redDisease);
+        PrintDiseaseInfo(blueDisease);
+        PrintDiseaseInfo(yellowDisease);
+        PrintDiseaseInfo(blackDisease);
+        
+        System.out.println("--- END TEST GETTERS ---\n");
     }
 
     
