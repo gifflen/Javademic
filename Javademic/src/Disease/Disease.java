@@ -141,16 +141,17 @@ public class Disease
      * Add one disease counter to the board
      * @precondition
      *  pile is greater than 0
+     *  isEradicated is false
      * @postcondition
      *  pile has been decremented
      *  numOnBoard has been incremented
      * @return 
      *  true if it was successful
-     *  false if pile was less than one, so it was unsuccessful
+     *  false if disease is eradicated or pile is less than 1; unsuccessful add
      */
     public boolean addOneToBoard()
     {
-        if (pile < 1)
+        if (eradicated || pile < 1)
         {
             return false;
         }
