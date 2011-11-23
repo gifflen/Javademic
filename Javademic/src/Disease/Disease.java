@@ -58,6 +58,46 @@ public class Disease
         cured = false;
         eradicated = false;        
     }
+
+    /**
+     * Get this diseases color
+     * @return 
+     *  The color string of this disease
+     */
+    public String getColor()
+    {
+        return color;
+    }
+
+    /**
+     * Get this diseases image file
+     * @return 
+     *  The image file of this disease
+     */
+    public File getImgFile()
+    {
+        return imgFile;
+    }
+
+    /**
+     * Get the number of counters on the board
+     * @return 
+     *  The number of counters on the board
+     */
+    public int getNumOnBoard()
+    {
+        return numOnBoard;
+    }
+
+    /**
+     * Get the number of counters in the pile
+     * @return 
+     *  The number of counters in the pile
+     */
+    public int getPile()
+    {
+        return pile;
+    }
     
     /**
      * Cure this disease
