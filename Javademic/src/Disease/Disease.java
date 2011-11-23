@@ -103,10 +103,16 @@ public class Disease
      * Cure this disease
      * @postcondition
      *  cured is true
+     *  If numOnBoard is 0 then eradicated is also true
      */
     public void cure()
     {
         cured = true;
+        
+        if (numOnBoard == 0)
+        {
+            eradicated = true;
+        }
     }
 
     /**
@@ -197,7 +203,7 @@ public class Disease
         if (numOnBoard < 1)
         {
             throw new IllegalStateException
-                    ("No disease counters are on the board");
+                    ("Insufficient disease counters are on the board");
         }
         
         numOnBoard--;
