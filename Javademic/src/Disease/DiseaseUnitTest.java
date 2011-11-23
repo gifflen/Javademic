@@ -27,6 +27,8 @@ public class DiseaseUnitTest
         testGetters();
         
         testAdd();
+        
+        testRemove();
     }
     
     private static void PrintDiseaseInfo(Disease diseaseToPrint)
@@ -172,6 +174,31 @@ public class DiseaseUnitTest
         PrintDiseaseInfo(blackDisease);
         
         System.out.println("--- END TEST ADD METHODS ---\n");
+    }
+
+    private static void testRemove()
+    {
+        System.out.println("--- TEST REMOVE METHODS ---\n");
+        
+        System.out.println("Remove one blueDisease from the board");
+        blueDisease.removeOneFromBoard();
+        PrintDiseaseInfo(blueDisease);
+        
+        System.out.println("Remove three yellowDiseases from the Board");
+        yellowDisease.removeFromBoard(3);
+        PrintDiseaseInfo(yellowDisease);
+        
+        System.out.println("Try to Remove 2 redDiseases from the Board");
+        try
+        {
+            redDisease.removeFromBoard(2);
+        }
+        catch (IllegalStateException e)
+        {
+            System.out.println(e.getMessage() + "\n");
+        }
+         
+        System.out.println("--- END TEST REMOVE METHODS ---\n");
     }
 
     
