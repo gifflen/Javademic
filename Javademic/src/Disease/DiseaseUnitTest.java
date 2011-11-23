@@ -25,6 +25,8 @@ public class DiseaseUnitTest
         createDiseases();
         
         testGetters();
+        
+        testAdd();
     }
     
     private static void PrintDiseaseInfo(Disease diseaseToPrint)
@@ -143,6 +145,33 @@ public class DiseaseUnitTest
         PrintDiseaseInfo(blackDisease);
         
         System.out.println("--- END TEST GETTERS ---\n");
+    }
+
+    private static void testAdd()
+    {
+        System.out.println("--- TEST ADD METHODS ---\n");
+        
+        System.out.println("Add one redDiseases to the Board");
+        System.out.println("Success: " + redDisease.addOneToBoard());
+        PrintDiseaseInfo(redDisease);
+        
+        System.out.println("Add two blueDiseases to the Board");
+        System.out.println("Success: " + blueDisease.addToBoard(2));
+        PrintDiseaseInfo(blueDisease);
+        
+        System.out.println("Add three yellowDiseases to the Board");
+        System.out.println("Success: " + yellowDisease.addToBoard(3));
+        PrintDiseaseInfo(yellowDisease);
+        
+        System.out.println("Add 24 blackDiseases to the Board");
+        System.out.println("Success: " + blackDisease.addToBoard(24));
+        PrintDiseaseInfo(blackDisease);
+        
+        System.out.println("Add one more blackDisease to the Board");
+        System.out.println("Success: " + blackDisease.addOneToBoard());
+        PrintDiseaseInfo(blackDisease);
+        
+        System.out.println("--- END TEST ADD METHODS ---\n");
     }
 
     
