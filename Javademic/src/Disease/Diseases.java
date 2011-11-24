@@ -30,7 +30,8 @@ public class Diseases
         if (diseaseCount < 1)
         {
             throw new IllegalArgumentException
-                    (diseaseCount + ": must be positive.");
+                    ("DiseaseCount of : (" + diseaseCount 
+                    + ") is invalid it must be a positive integer");
         }
         
         diseases = new Disease[diseaseCount];
@@ -74,12 +75,12 @@ public class Diseases
     }
     
     /**
-     * Adds a disease with initialColor, initialImgLoc, 
+     * Adds a disease with initialName, initialImgLoc, 
      *  and initialCount to this collection
      * @precondition
      *  diseases is not full
-     * @param initialColor
-     *  The initial color of the disease to add
+     * @param initialName
+     *  The initial name of the disease to add
      * @param initialImgLoc
      *  The initial image location of the disease to add
      * @param initialCount
@@ -92,10 +93,10 @@ public class Diseases
      *  false if disease was NOT added because diseases was full
      */
     public boolean addDisease
-            (String initialColor, String initialImgLoc, int initialCount)
+            (String initialName, String initialImgLoc, int initialCount)
     {
         return addDisease
-                (new Disease(initialColor, initialImgLoc, initialCount));
+                (new Disease(initialName, initialImgLoc, initialCount));
     }
     
     /**
