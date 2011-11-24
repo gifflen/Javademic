@@ -11,6 +11,12 @@ public class DiseasesUnitTest
 {     
     private static Diseases standardDiseases;
     private static Diseases experimentalDiseases;
+    private static Disease spanishFlu = new Disease("Spanish Flu", 
+                "tempResources/diseaseCubes/red_disease.png", 
+                15);
+    private static Disease tb = new Disease("Tuberculosis", 
+                "tempResources/diseaseCubes/blue_disease.png", 
+                20);
 
     
     /**
@@ -27,6 +33,8 @@ public class DiseasesUnitTest
         testAddDisease();
         
         testGetters();
+        
+        testCure();
         
         System.out.println("### END DISEASES UNIT TEST ###\n");
     }
@@ -94,15 +102,7 @@ public class DiseasesUnitTest
     
     
     private static void testAddDisease()
-    {
-        Disease spanishFlu = new Disease("Spanish Flu", 
-                "tempResources/diseaseCubes/red_disease.png", 
-                15);
-        Disease tb = new Disease("Tuberculosis", 
-                "tempResources/diseaseCubes/blue_disease.png", 
-                20);
-        
-        
+    {  
         System.out.println("--- BEGIN ADD TEST ---\n");
         
         printDiseases(standardDiseases, "Standard Diseases");        
@@ -181,6 +181,86 @@ public class DiseasesUnitTest
         System.out.println("");
         
         System.out.println("--- END GETTERS TEST ---\n");
+    }
+
+    private static void testCure()
+    {
+        System.out.println("--- BEGIN CURE TEST ---\n");
+        
+        System.out.println("Cure standardDiseases disease at index 0");
+        standardDiseases.cure(0);
+        printDiseases(standardDiseases, "Standard Diseases");
+        
+        System.out.println("Cure standardDiseases disease at index 3");
+        standardDiseases.cure(3);
+        printDiseases(standardDiseases, "Standard Diseases");
+        
+        System.out.println("standardDiseases all cured: " 
+                + standardDiseases.isAllCured());
+        System.out.println("");
+        
+        System.out.println("Try to cure standardDiseases disease at index 4");
+        try
+        {
+            standardDiseases.cure(4);
+        }
+        catch (IndexOutOfBoundsException e)
+        {
+            System.out.println(e);
+        }
+        System.out.println("");
+        
+        System.out.println("Try to cure standardDiseases disease at index -1");
+        try
+        {
+            standardDiseases.cure(-1);
+        }
+        catch (IndexOutOfBoundsException e)
+        {
+            System.out.println(e);
+        }
+        System.out.println("");
+        printDiseases(standardDiseases, "Standard Diseases");
+        
+        System.out.println("standardDiseases all cured: " 
+                + standardDiseases.isAllCured());
+        System.out.println("");
+        
+        
+        System.out.println("Cure experimentalDiseases disease spanishFlu");
+        experimentalDiseases.cure(spanishFlu);
+        printDiseases(experimentalDiseases, "Experimental Diseases");
+        
+        System.out.println("Cure experimentalDiseases disease tb");
+        experimentalDiseases.cure(tb);
+        printDiseases(experimentalDiseases, "Experimental Diseases");
+        
+        System.out.println("experimentalDiseases all cured: " 
+                + experimentalDiseases.isAllCured());
+        System.out.println("");
+        
+        System.out.println("Try to cure experimentalDiseases disease "
+                + "not in the collection");
+        try
+        {
+            experimentalDiseases.cure(
+                    new Disease("Black Plague", 
+                            "tempResources/diseaseCubes/black_disease.png", 
+                            50));
+        }
+        catch (IllegalArgumentException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("");
+        
+        printDiseases(experimentalDiseases, "Experimental Diseases");
+        
+        System.out.println("experimentalDiseases all cured: " 
+                + experimentalDiseases.isAllCured());
+        System.out.println("");
+        
+        System.out.println("--- END CURE TEST ---\n");
     }
 
 
