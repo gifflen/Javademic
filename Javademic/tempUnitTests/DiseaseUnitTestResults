@@ -1,0 +1,227 @@
+run:
+### BEGIN DISEASE UNIT TEST ###
+
+--- BEGIN CREATING DISEASES ---
+
+Creating disease redDisease
+Disease redDisease created
+
+Creating disease blueDisease
+Disease blueDisease created
+
+Creating disease yellowDisease
+Disease yellowDisease created
+
+Creating disease blackDisease
+Disease blackDisease created
+
+Trying to creat disease whose image file doesnt exist.
+tempResources/diseaseCubes/purple_disease.png: Not Found
+
+Trying to creat disease with 0 intialPile
+Pile must be a postive number
+
+Trying to creat disease with -24 intialPile
+Pile must be a postive number
+
+Creating testDisease with 1 intialPile
+Disease testDisease created
+
+--- END CREATING DISEASES ---
+
+--- BEGIN TEST GETTERS ---
+
+redDisease:
+	Name            : red
+	Image File      : tempResources\diseaseCubes\red_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : false
+	Eradicated      : false
+
+blueDisease:
+	Name            : blue
+	Image File      : tempResources\diseaseCubes\blue_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : false
+	Eradicated      : false
+
+yellowDisease:
+	Name            : yellow
+	Image File      : tempResources\diseaseCubes\yellow_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : false
+	Eradicated      : false
+
+blackDisease:
+	Name            : black
+	Image File      : tempResources\diseaseCubes\black_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : false
+	Eradicated      : false
+
+--- END TEST GETTERS ---
+
+--- BEGIN TEST ADD METHODS ---
+
+Add one redDiseases to the Board
+Success: true
+redDisease:
+	Name            : red
+	Image File      : tempResources\diseaseCubes\red_disease.png
+	Number of Board : 1
+	Pile            : 23
+	Cured           : false
+	Eradicated      : false
+
+Add two blueDiseases to the Board
+Success: true
+blueDisease:
+	Name            : blue
+	Image File      : tempResources\diseaseCubes\blue_disease.png
+	Number of Board : 2
+	Pile            : 22
+	Cured           : false
+	Eradicated      : false
+
+Add three yellowDiseases to the Board
+Success: true
+yellowDisease:
+	Name            : yellow
+	Image File      : tempResources\diseaseCubes\yellow_disease.png
+	Number of Board : 3
+	Pile            : 21
+	Cured           : false
+	Eradicated      : false
+
+Add 24 blackDiseases to the Board
+Success: true
+blackDisease:
+	Name            : black
+	Image File      : tempResources\diseaseCubes\black_disease.png
+	Number of Board : 24
+	Pile            : 0
+	Cured           : false
+	Eradicated      : false
+
+Add one more blackDisease to the Board
+Success: false
+blackDisease:
+	Name            : black
+	Image File      : tempResources\diseaseCubes\black_disease.png
+	Number of Board : 24
+	Pile            : 0
+	Cured           : false
+	Eradicated      : false
+
+--- END TEST ADD METHODS ---
+
+--- BEGIN TEST REMOVE METHODS ---
+
+Remove one blueDisease from the board
+blueDisease:
+	Name            : blue
+	Image File      : tempResources\diseaseCubes\blue_disease.png
+	Number of Board : 1
+	Pile            : 23
+	Cured           : false
+	Eradicated      : false
+
+Remove three yellowDiseases from the Board
+yellowDisease:
+	Name            : yellow
+	Image File      : tempResources\diseaseCubes\yellow_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : false
+	Eradicated      : false
+
+Try to Remove 2 redDiseases from the Board
+Insufficient disease counters are on the board
+
+--- END TEST REMOVE METHODS ---
+
+--- BEGIN TEST CURE AND ERADICATED METHODS ---
+
+Cure blueDisease
+blueDisease:
+	Name            : blue
+	Image File      : tempResources\diseaseCubes\blue_disease.png
+	Number of Board : 1
+	Pile            : 23
+	Cured           : true
+	Eradicated      : false
+
+Remove last blueDisease counter
+blueDisease:
+	Name            : blue
+	Image File      : tempResources\diseaseCubes\blue_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : true
+	Eradicated      : true
+
+Try to add one blueDisease counter
+Success: false
+blueDisease:
+	Name            : blue
+	Image File      : tempResources\diseaseCubes\blue_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : true
+	Eradicated      : true
+
+Cure yellowDisease
+yellowDisease:
+	Name            : yellow
+	Image File      : tempResources\diseaseCubes\yellow_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : true
+	Eradicated      : true
+
+Try to add three yellowDisease counters
+Success: false
+yellowDisease:
+	Name            : yellow
+	Image File      : tempResources\diseaseCubes\yellow_disease.png
+	Number of Board : 0
+	Pile            : 24
+	Cured           : true
+	Eradicated      : true
+
+Cure blackDisease
+Remove one blackDisease counter
+blackDisease:
+	Name            : black
+	Image File      : tempResources\diseaseCubes\black_disease.png
+	Number of Board : 23
+	Pile            : 1
+	Cured           : true
+	Eradicated      : false
+
+Remove all but one blackDisease counter
+blackDisease:
+	Name            : black
+	Image File      : tempResources\diseaseCubes\black_disease.png
+	Number of Board : 1
+	Pile            : 23
+	Cured           : true
+	Eradicated      : false
+
+Add one blackDisease counter to the Board
+blackDisease:
+	Name            : black
+	Image File      : tempResources\diseaseCubes\black_disease.png
+	Number of Board : 2
+	Pile            : 22
+	Cured           : true
+	Eradicated      : false
+
+--- END TEST CURE AND ERADICATED METHODS ---
+
+### END DISEASE UNIT TEST ###
+BUILD SUCCESSFUL (total time: 0 seconds)
