@@ -1,0 +1,197 @@
+run:
+### BEGIN DISEASES UNIT TEST ###
+
+--- BEGIN CREATING DISEASES COLLECTIONS ---
+
+Create standardDiseases with no-arg constructor
+Create experimentalDiseases with 2 diseases
+Try to create another collection with 0 diseases
+DiseaseCount of : (0) is invalid it must be a positive integer
+Try to create another collection with -42 diseases
+DiseaseCount of : (-42) is invalid it must be a positive integer
+
+--- END CREATING DISEASES COLLECTIONS ---
+
+--- BEGIN ADD TEST ---
+
+Standard Diseases(0):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+
+Add red disease to standardDiseases using Disease
+Success: true
+Standard Diseases(1):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24          false          false               tempResources\diseaseCubes\red_disease.png
+
+Add blue disease to standardDiseases using Disease
+Success: true
+Standard Diseases(2):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24          false          false               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+
+Add yellow disease to standardDiseases using params
+Success: true
+Standard Diseases(3):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24          false          false               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+
+Add black disease to standardDiseases using params
+Success: true
+Standard Diseases(4):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24          false          false               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+          black              0             24          false          false               tempResources\diseaseCubes\black_disease.png
+
+Try to add another disease to standardDiseases using Disease
+Success: false
+Standard Diseases(4):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24          false          false               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+          black              0             24          false          false               tempResources\diseaseCubes\black_disease.png
+
+Experimental Diseases(0):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+
+Add Spanish Flu to experimentalDiseases
+Success: true
+Experimental Diseases(1):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+    Spanish Flu              0             15          false          false               tempResources\diseaseCubes\red_disease.png
+
+Add Tuberculosis to experimentalDiseases
+Success: true
+Experimental Diseases(2):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+    Spanish Flu              0             15          false          false               tempResources\diseaseCubes\red_disease.png
+   Tuberculosis              0             20          false          false               tempResources\diseaseCubes\blue_disease.png
+
+Try to add another disease to experimentalDiseases using params
+Success: false
+Experimental Diseases(2):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+    Spanish Flu              0             15          false          false               tempResources\diseaseCubes\red_disease.png
+   Tuberculosis              0             20          false          false               tempResources\diseaseCubes\blue_disease.png
+
+--- END ADD TEST ---
+
+--- BEGIN GETTERS TEST ---
+
+Standard Diseases(4):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24          false          false               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+          black              0             24          false          false               tempResources\diseaseCubes\black_disease.png
+
+Experimental Diseases(2):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+    Spanish Flu              0             15          false          false               tempResources\diseaseCubes\red_disease.png
+   Tuberculosis              0             20          false          false               tempResources\diseaseCubes\blue_disease.png
+
+standardDiseases all cured: false
+experimentalDiseases all cured: false
+
+--- END GETTERS TEST ---
+
+--- BEGIN CURE TEST ---
+
+Cure standardDiseases disease at index 0
+Standard Diseases(4):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24           true           true               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+          black              0             24          false          false               tempResources\diseaseCubes\black_disease.png
+
+Cure standardDiseases disease at index 3
+Standard Diseases(4):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24           true           true               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+          black              0             24           true           true               tempResources\diseaseCubes\black_disease.png
+
+standardDiseases all cured: false
+
+Try to cure standardDiseases disease at index 4
+java.lang.ArrayIndexOutOfBoundsException: 4
+
+Try to cure standardDiseases disease at index -1
+java.lang.ArrayIndexOutOfBoundsException: -1
+
+Standard Diseases(4):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24           true           true               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+          black              0             24           true           true               tempResources\diseaseCubes\black_disease.png
+
+standardDiseases all cured: false
+
+Cure experimentalDiseases disease spanishFlu
+Experimental Diseases(2):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+    Spanish Flu              0             15           true           true               tempResources\diseaseCubes\red_disease.png
+   Tuberculosis              0             20          false          false               tempResources\diseaseCubes\blue_disease.png
+
+Cure experimentalDiseases disease tb
+Experimental Diseases(2):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+    Spanish Flu              0             15           true           true               tempResources\diseaseCubes\red_disease.png
+   Tuberculosis              0             20           true           true               tempResources\diseaseCubes\blue_disease.png
+
+experimentalDiseases all cured: true
+
+Try to cure experimentalDiseases disease not in the collection
+Disease : Disease.Disease@998b08 Not Found.
+
+Experimental Diseases(2):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+    Spanish Flu              0             15           true           true               tempResources\diseaseCubes\red_disease.png
+   Tuberculosis              0             20           true           true               tempResources\diseaseCubes\blue_disease.png
+
+experimentalDiseases all cured: true
+
+--- END CURE TEST ---
+
+--- BEGIN GET DISEASE AND INDEX TEST ---
+
+Standard Diseases(4):
+           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+            red              0             24           true           true               tempResources\diseaseCubes\red_disease.png
+           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+          black              0             24           true           true               tempResources\diseaseCubes\black_disease.png
+
+Get diseases from standardDiseases at indexes
+
+          index                     Reference           Name     NumOnBoard           Pile          Cured     Eradicated               ImgLoc                        
+              0        Disease.Disease@76cbf7            red              0             24           true           true               tempResources\diseaseCubes\red_disease.png
+              1       Disease.Disease@148cc8c           blue              0             24          false          false               tempResources\diseaseCubes\blue_disease.png
+              2        Disease.Disease@6d084b         yellow              0             24          false          false               tempResources\diseaseCubes\yellow_disease.png
+              3        Disease.Disease@3bb2b8          black              0             24           true           true               tempResources\diseaseCubes\black_disease.png
+
+Try to get disease at index 4
+java.lang.ArrayIndexOutOfBoundsException: 4
+Try to get disease at index -1
+java.lang.ArrayIndexOutOfBoundsException: -1
+
+Get index of spansishFlu
+spanishFlu[0]
+Get index of tb
+tb[1]
+Get index of blackPlague (doesn't exist in collection)
+blackPlague[-1]
+
+--- END GET DISEASE AND INDEX TEST ---
+
+### END DISEASES UNIT TEST ###
+
+BUILD SUCCESSFUL (total time: 0 seconds)
