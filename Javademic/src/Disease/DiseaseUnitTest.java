@@ -35,7 +35,7 @@ public class DiseaseUnitTest
     
     /**
      * Print the disease information; 
-     *  color, imgFile,numOnBoard,Pile,Cure, and eradicated
+     *  name, imgFile,numOnBoard,Pile,Cure, and eradicated
      * @precondition
      *  diseaseToPrint is not Null
      * @param diseaseToPrint 
@@ -45,9 +45,9 @@ public class DiseaseUnitTest
      */
     private static void PrintDiseaseInfo(Disease diseaseToPrint)
     {
-        System.out.println(diseaseToPrint.getColor() + "Disease:");
-        System.out.println("\tColor           : " + 
-                diseaseToPrint.getColor());
+        System.out.println(diseaseToPrint.getName() + "Disease:");
+        System.out.println("\tName            : " + 
+                diseaseToPrint.getName());
         System.out.println("\tImage File      : " + 
                 diseaseToPrint.getImgFile());
         System.out.println("\tNumber of Board : " + 
