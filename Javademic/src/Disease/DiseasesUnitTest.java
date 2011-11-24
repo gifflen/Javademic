@@ -30,6 +30,26 @@ public class DiseasesUnitTest
         
         System.out.println("### END DISEASES UNIT TEST ###\n");
     }
+    
+    private static void printDiseases
+            (Diseases diseasesToPrint, String collectionName)
+    {
+        Disease[] diseaseArray = diseasesToPrint.getDiseases();
+        
+        System.out.println(collectionName + "(" 
+                + diseasesToPrint.getPosition() + "):");
+        System.out.printf("%15s%15s%15s%15s%15s%15s%-30s\n",
+                "Name","NumOnBoard","Pile","Cured","Eradicated","","ImgLoc");
+        
+        for (int i = 0; i < diseasesToPrint.getPosition(); i++)
+        {
+            System.out.printf("%15s%15s%15s%15s%15s%15s%-30s\n",
+                diseaseArray[i].getName(),diseaseArray[i].getNumOnBoard(),
+                diseaseArray[i].getPile(),diseaseArray[i].isCured(),
+                diseaseArray[i].isEradicated(),"",diseaseArray[i].getImgFile());
+        }
+        System.out.println("");
+    }
 
     /**
      * Create diseases collections and test illegal constructors
@@ -85,51 +105,63 @@ public class DiseasesUnitTest
         
         System.out.println("--- BEGIN ADD TEST ---\n");
         
+        printDiseases(standardDiseases, "Standard Diseases");        
+
         System.out.println("Add red disease to standardDiseases using Disease");
         System.out.println("Success: " + standardDiseases.addDisease(
                 new Disease("red", 
                         "tempResources/diseaseCubes/red_disease.png", 
-                        24)) + "\n");
+                        24)));        
+        printDiseases(standardDiseases, "Standard Diseases");
         
         System.out.println("Add blue disease to standardDiseases using Disease");
         System.out.println("Success: " + standardDiseases.addDisease(
                 new Disease("blue", 
                         "tempResources/diseaseCubes/blue_disease.png", 
-                        24)) + "\n");        
+                        24)));  
+        printDiseases(standardDiseases, "Standard Diseases");
         
         System.out.println("Add yellow disease to "
                 + "standardDiseases using params");
         System.out.println("Success: " + standardDiseases.addDisease("yellow", 
                 "tempResources/diseaseCubes/yellow_disease.png", 
-                24) + "\n");        
+                24)); 
+        printDiseases(standardDiseases, "Standard Diseases");
         
         System.out.println("Add black disease to "
                 + "standardDiseases using params");
         System.out.println("Success: " + standardDiseases.addDisease("black", 
                 "tempResources/diseaseCubes/black_disease.png", 
-                24) + "\n");
+                24));
+        printDiseases(standardDiseases, "Standard Diseases");
         
         System.out.println("Try to add another disease to "
                 + "standardDiseases using Disease");
         System.out.println("Success: " + standardDiseases.addDisease(
                 new Disease("purple", 
                         "tempResources/diseaseCubes/red_disease.png", 
-                        24)) + "\n");
+                        24)));
+        printDiseases(standardDiseases, "Standard Diseases");
+        
+        printDiseases(experimentalDiseases, "Experimental Diseases");
         
         System.out.println("Add Spanish Flu to experimentalDiseases");
         System.out.println("Success: " 
-                + experimentalDiseases.addDisease(spanishFlu) + "\n");
+                + experimentalDiseases.addDisease(spanishFlu));
+        printDiseases(experimentalDiseases, "Experimental Diseases");
         
         System.out.println("Add Tuberculosis to experimentalDiseases");
         System.out.println("Success: " 
-                + experimentalDiseases.addDisease(tb) + "\n");
+                + experimentalDiseases.addDisease(tb));
+        printDiseases(experimentalDiseases, "Experimental Diseases");
         
         System.out.println("Try to add another disease to "
                 + "experimentalDiseases using params");
         System.out.println("Success: " 
                 + experimentalDiseases.addDisease("Black Death", 
                 "tempResources/diseaseCubes/black_disease.png", 
-                50) + "\n");
+                50));
+        printDiseases(experimentalDiseases, "Experimental Diseases");
         
         
         System.out.println("--- END ADD TEST ---\n");
@@ -139,7 +171,14 @@ public class DiseasesUnitTest
     {
         System.out.println("--- BEGIN GETTERS TEST ---\n");
         
+        printDiseases(standardDiseases, "Standard Diseases");
+        printDiseases(experimentalDiseases, "Experimental Diseases");
         
+        System.out.println("standardDiseases all cured: " 
+                + standardDiseases.isAllCured());
+        System.out.println("experimentalDiseases all cured: " 
+                + experimentalDiseases.isAllCured());
+        System.out.println("");
         
         System.out.println("--- END GETTERS TEST ---\n");
     }
