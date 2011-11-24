@@ -36,6 +36,8 @@ public class DiseasesUnitTest
         
         testCure();
         
+        testGetDiseaseAndIndex();
+        
         System.out.println("### END DISEASES UNIT TEST ###\n");
     }
     
@@ -263,6 +265,90 @@ public class DiseasesUnitTest
         System.out.println("--- END CURE TEST ---\n");
     }
 
-
-    
+    private static void testGetDiseaseAndIndex()
+    {
+        System.out.println("--- BEGIN GET DISEASE AND INDEX TEST ---\n");
+                 
+        printDiseases(standardDiseases , "Standard Diseases");
+        
+        System.out.println("Get diseases from standardDiseases at indexes\n");
+        System.out.printf("%15s%30s%15s%15s%15s%15s%15s%15s%-30s\n", 
+                "index", "Reference", "Name","NumOnBoard","Pile",
+                "Cured","Eradicated","","ImgLoc");
+        System.out.printf("%15s%30s%15s%15s%15s%15s%15s%15s%-30s\n", 
+                0, standardDiseases.getDisease(0), 
+                standardDiseases.getDisease(0).getName(),
+                standardDiseases.getDisease(0).getNumOnBoard(),
+                standardDiseases.getDisease(0).getPile(),
+                standardDiseases.getDisease(0).isCured(),
+                standardDiseases.getDisease(0).isEradicated(),"",
+                standardDiseases.getDisease(0).getImgFile());
+        System.out.printf("%15s%30s%15s%15s%15s%15s%15s%15s%-30s\n", 
+                1, standardDiseases.getDisease(1), 
+                standardDiseases.getDisease(1).getName(),
+                standardDiseases.getDisease(1).getNumOnBoard(),
+                standardDiseases.getDisease(1).getPile(),
+                standardDiseases.getDisease(1).isCured(),
+                standardDiseases.getDisease(1).isEradicated(),"",
+                standardDiseases.getDisease(1).getImgFile());
+        System.out.printf("%15s%30s%15s%15s%15s%15s%15s%15s%-30s\n", 
+                2, standardDiseases.getDisease(2), 
+                standardDiseases.getDisease(2).getName(),
+                standardDiseases.getDisease(2).getNumOnBoard(),
+                standardDiseases.getDisease(2).getPile(),
+                standardDiseases.getDisease(2).isCured(),
+                standardDiseases.getDisease(2).isEradicated(),"",
+                standardDiseases.getDisease(2).getImgFile());
+        System.out.printf("%15s%30s%15s%15s%15s%15s%15s%15s%-30s\n", 
+                3, standardDiseases.getDisease(3), 
+                standardDiseases.getDisease(3).getName(),
+                standardDiseases.getDisease(3).getNumOnBoard(),
+                standardDiseases.getDisease(3).getPile(),
+                standardDiseases.getDisease(3).isCured(),
+                standardDiseases.getDisease(3).isEradicated(),"",
+                standardDiseases.getDisease(3).getImgFile());
+        
+        System.out.println("");
+        
+        System.out.println("Try to get disease at index 4");
+        try
+        {
+            standardDiseases.getDisease(4);
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {             
+            System.out.println(e);
+        }
+        
+        System.out.println("Try to get disease at index -1");
+        try
+        {
+            standardDiseases.getDisease(-1);
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {             
+            System.out.println(e);
+        }
+        
+        System.out.println("");
+        
+        System.out.println("Get index of spansishFlu");
+        System.out.println("spanishFlu[" 
+                + experimentalDiseases.getIndex(spanishFlu) + "]");
+        System.out.println("Get index of tb");
+        System.out.println("tb[" 
+                + experimentalDiseases.getIndex(tb) + "]");
+        System.out.println
+                ("Get index of blackPlague (doesn't exist in collection)");
+        System.out.println("blackPlague[" 
+                + experimentalDiseases.getIndex(
+                new Disease("Black Plague", 
+                        "tempResources/diseaseCubes/black_disease.png", 
+                        50)
+                ) + "]");
+        
+        System.out.println("");
+        
+        System.out.println("--- END GET DISEASE AND INDEX TEST ---\n");
+    }   
 }
