@@ -30,7 +30,7 @@ public class Diseases
         if (diseaseCount < 1)
         {
             throw new IllegalArgumentException
-                    (diseaseCount + ": diseaseCount must be positive.");
+                    (diseaseCount + ": must be positive.");
         }
         
         diseases = new Disease[diseaseCount];
