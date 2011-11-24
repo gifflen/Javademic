@@ -102,15 +102,15 @@ public class Diseases
     /**
      * Cure the disease at diseaseLoc
      * @precondition
-     *  diseaseLoc is a valid position in diseases array
-     * @param diseaseLoc 
+     *  index is a valid position in diseases array
+     * @param index 
      *  The position of the disease to cure
      * @exception IndexOutOfBoundsException
-     *  diseaseLoc was NOT a valid position in diseases array
+     *  index was NOT a valid position in diseases array
      */
-    public void cure(int diseaseLoc)
+    public void cure(int index)
     {
-        diseases[diseaseLoc].cure();
+        diseases[index].cure();
         
         if (checkAllCured())
         {
@@ -166,6 +166,50 @@ public class Diseases
         }
         
         return true;
+    }
+    
+    /**
+     * Get the disease at the given index
+     * @param index
+     *  The index of the disease to get
+     * @precondition
+     *  index is a valid position in diseases array
+     * @return 
+     *  The disease at index
+     * @postcondition
+     *  disease at index has been returned
+     * @exception IndexOutOfBoundsException
+     *  index was NOT a valid position in diseases array
+     */
+    public Disease getDisease(int index)
+    {        
+        return diseases[index];
+    }
+    
+    /**
+     * Get the index of a given disease
+     * @param diseaseToFind
+     *  The disease whose index to find
+     * @return 
+     *  The index of diseaseToFind or
+     *  -1 if not found
+     * @postcondition
+     *  The index of diseaseToFind has been returned or
+     *  -1 has been returned if diseaseToFind was not found  
+     */
+    public int getIndex(Disease diseaseToFind)
+    {
+        int index = -1;
+        
+        for (int i = 0; i < diseases.length; i++)
+        {
+            if (diseaseToFind == diseases[i])
+            {
+                return i;
+            }
+        }
+        
+        return index;        
     }
 
     /**
