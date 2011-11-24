@@ -22,6 +22,8 @@ public class DiseaseUnitTest
      */
     public static void main(String[] args)
     { 
+        System.out.println("### BEGIN DISEASE UNIT TEST ###\n");
+        
         createDiseases();
         
         testGetters();
@@ -31,6 +33,8 @@ public class DiseaseUnitTest
         testRemove();
         
         testCureAndEradicated();
+        
+        System.out.println("### END DISEASE UNIT TEST ###");
     }
     
     /**
@@ -72,7 +76,7 @@ public class DiseaseUnitTest
     private static void createDiseases()
     {        
         
-        System.out.println("--- CREATING DISEASES ---\n");
+        System.out.println("--- BEGIN CREATING DISEASES ---\n");
         
         System.out.println("Creating disease redDisease");
         redDisease = new Disease
@@ -159,7 +163,7 @@ public class DiseaseUnitTest
      */
     private static void testGetters()
     {
-        System.out.println("--- TEST GETTERS ---\n");
+        System.out.println("--- BEGIN TEST GETTERS ---\n");
         
         PrintDiseaseInfo(redDisease);
         PrintDiseaseInfo(blueDisease);
@@ -179,7 +183,7 @@ public class DiseaseUnitTest
      */
     private static void testAdd()
     {
-        System.out.println("--- TEST ADD METHODS ---\n");
+        System.out.println("--- BEGIN TEST ADD METHODS ---\n");
         
         System.out.println("Add one redDiseases to the Board");
         System.out.println("Success: " + redDisease.addToBoard());
@@ -214,7 +218,7 @@ public class DiseaseUnitTest
      */
     private static void testRemove()
     {
-        System.out.println("--- TEST REMOVE METHODS ---\n");
+        System.out.println("--- BEGIN TEST REMOVE METHODS ---\n");
         
         System.out.println("Remove one blueDisease from the board");
         blueDisease.removeFromBoard();
@@ -247,7 +251,7 @@ public class DiseaseUnitTest
      */
     private static void testCureAndEradicated()
     {
-        System.out.println("--- TEST CURE AND ERADICATED METHODS ---\n");
+        System.out.println("--- BEGIN TEST CURE AND ERADICATED METHODS ---\n");
         
         System.out.println("Cure blueDisease");
         blueDisease.cure();
