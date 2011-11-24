@@ -11,7 +11,7 @@ import java.io.File;
  */
 public class Disease
 {
-    private String color;
+    private String name;
     private File imgFile;
     private int pile;
     private int numOnBoard;
@@ -21,8 +21,8 @@ public class Disease
     
     /**
      * Constructs Disease Object
-     * @param initialColor
-     *  The initial color of the disease
+     * @param initialName
+     *  The initial name of the disease
      * @param initialImgLoc
      *  The initial location of the image
      * @param initialPile 
@@ -31,14 +31,14 @@ public class Disease
      *  intialImgLoc must be a valid location
      *  intialPile must be a positive number
      * @postcondition
-     *  A Disease object has been create with intialColor, intialImgLoc, and 
+     *  A Disease object has been create with initialName, intialImgLoc, and 
      *  initialPile.  numOnBoard is 0.  cured and eradicated are false.
      * @exception IllegalArgumentException
      *  initialImgLoc does not exist
      * @exception IllegalArgumentException
      *  initialPile is NOT positive
      */
-    public Disease(String initialColor, String initialImgLoc, int initialPile)
+    public Disease(String initialName, String initialImgLoc, int initialPile)
     {
         imgFile = new File(initialImgLoc);
 
@@ -52,7 +52,7 @@ public class Disease
             throw new IllegalArgumentException("Pile must be a postive number");
         }
         
-        color = initialColor;
+        name = initialName;
         pile = initialPile;
         numOnBoard = 0;
         cured = false;
@@ -60,13 +60,13 @@ public class Disease
     }
 
     /**
-     * Get this diseases color
+     * Get this diseases name
      * @return 
-     *  The color string of this disease
+     *  The name string of this disease
      */
-    public String getColor()
+    public String getName()
     {
-        return color;
+        return name;
     }
 
     /**
