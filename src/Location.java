@@ -23,7 +23,7 @@ public class Location {
     }
 
     public Location(String locationName) {
-        this.locationName = locationName;
+        this.locationName = locationName.trim();
         this.connections = new HashMap<String,Location>();
     }
 
@@ -39,11 +39,24 @@ public class Location {
         this.locationName = locationName;
     }
 
+    public String listLocations(){
+        String out = "";
+        for(String location: connections.keySet()){
+            out+= location + ";";
+        }
+        return out;
+    }
+
+    public static String cleanString(String incLocationName){
+        incLocationName = Character.toUpperCase(incLocationName.charAt(0)) + incLocationName.substring(1).toLowerCase();
+        incLocationName= incLocationName.trim();
+        return incLocationName;
+    }
     @Override
     public String toString() {
         return "Location{" +
                 "locationName='" + locationName + '\'' +
-                ", connections=" + connections +
+                ", connections=" + this.listLocations() +
                 '}';
     }
 }
