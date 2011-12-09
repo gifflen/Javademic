@@ -17,7 +17,7 @@ public class Test
      */
     public static void main(String[] args)
     {              
-        //DiseaseUnitTest.main(args);
-        //DiseasesUnitTest.main(args);
+        DiseaseUnitTest.main(args);
+        DiseasesUnitTest.main(args);
     }
 }
