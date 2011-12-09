@@ -1,4 +1,7 @@
-package Disease;
+package UnitTests;
+
+import Disease.Disease;
+import Disease.Diseases;
 
 /**
  * A Unit Test of the Diseases Class

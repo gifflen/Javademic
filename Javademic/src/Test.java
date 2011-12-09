@@ -1,5 +1,6 @@
 
-import Disease.DiseaseUnitTest;
+import UnitTests.DiseaseUnitTest;
+import UnitTests.DiseasesUnitTest;
 
 /**
  * Calls test classes
@@ -15,7 +16,8 @@ public class Test
      * @param args the command line arguments
      */
     public static void main(String[] args)
-    {               
-        DiseaseUnitTest.main(args);
+    {              
+        //DiseaseUnitTest.main(args);
+        //DiseasesUnitTest.main(args);
     }
 }

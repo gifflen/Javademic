@@ -1,4 +1,6 @@
-package Disease;
+package UnitTests;
+
+import Disease.Disease;
 
 
 /**
