@@ -1,11 +1,14 @@
-
 /**
  * Created by IntelliJ IDEA.
  * User: Gifflen
  */
-public class LocationTestDriver {
+public class Game {
+
+
 
     public static void main(String[] args){
-         Board gameBoard = new Board();
+        //Initing Game Board
+        Board gameBoard = new Board();
+
     }
 }
