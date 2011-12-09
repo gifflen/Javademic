@@ -1,3 +1,5 @@
+package Cards;
+
 /*
  * This is to create the role card.
  * Object can any of the 1 of 5 roles in the game

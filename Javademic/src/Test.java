@@ -1,5 +1,7 @@
 
-import Disease.DiseaseUnitTest;
+import UnitTests.CardUnitTest;
+import UnitTests.InfectCardUnitTest;
+import UnitTests.PlayerCardsUntiTests;
 
 /**
  * Calls test classes
@@ -16,6 +18,8 @@ public class Test
      */
     public static void main(String[] args)
     {               
-        DiseaseUnitTest.main(args);
+        //CardUnitTest.main(args);
+        //PlayerCardsUntiTests.main(args);
+        InfectCardUnitTest.main(args);
     }
 }
