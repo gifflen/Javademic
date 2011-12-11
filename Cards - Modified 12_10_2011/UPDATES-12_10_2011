@@ -1,0 +1,14 @@
+UPDATES:
+1. Roles Card removed: I will make a separate non-card roles class to handle roles, as they are a one time action, not a recurring one.
+2. CardType and DeckType enums added.
+3. Added additional method stubs, applicable data, and getters/setters.
+4. Thinking it might be best to perform Infection actions in the deck as well. 
+  I.E. if (card.cardType == CardType.Infection)
+       {
+            Location.Infect(card.getLocation());
+       }
+
+Work to be done:
+  -Epidemic cards need to be finished, likely will be accomplished in the deck, rather than in the card.
+  -Special Event Cards incomplete. Could be accomplished through extended classes.
+  -Need to determine if Infection cards will be kept as is.
