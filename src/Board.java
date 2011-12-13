@@ -1,7 +1,5 @@
 import java.io.*;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,8 +13,8 @@ public class Board {
     private int difficulty;
     final String DEFAULT_LOCATION_NAME = "Atlanta";
     private Pawn[] players;
-    private Deque<PlayerCard> playerDeck;
-    private Deque<InfectionCard> infectionDeck;
+    private Deck<PlayerCard> playerDeck;
+    private Deck<InfectionCard> infectionDeck;
     private int infectionRate;
 
 
@@ -55,7 +53,7 @@ public class Board {
         this.initLocations();
         this.initPlayers();
         this.initDifficulty();
-        this.initDeck();
+        this.initDecks();
 
     }
 
@@ -96,9 +94,11 @@ public class Board {
        System.out.println("You've Chosen to play at the " + difficulty + " difficulty level");
     }
 
-    public void initDeck(){
+    public void initDecks(){
         System.out.println("Initializing Decks...");
-
+        playerDeck = new Deck<PlayerCard>();
+        infectionDeck = new Deck<InfectionCard>();
+        System.out.println("Adding cards to deck.");
         for (Location location : locations.values()) {
             PlayerCard playerCard = new PlayerCard(location);
             InfectionCard  infectionCard = new InfectionCard(location);
@@ -106,8 +106,13 @@ public class Board {
             infectionDeck.push(infectionCard);
         }
 
-        //Shuffle Deck
-        System.out.println("NOT IMPLEMENTED YET");
+        //Shuffling Decks
+        playerDeck.shuffle();
+        infectionDeck.shuffle();
+
+        //Need to split decks and insert Epidemic cards.
+
+
     }
 
 
