@@ -13,6 +13,7 @@ public class Location {
         this.color = color;
     }
 
+
     private String color;
     private HashMap<String,Location> connections;
 

@@ -14,8 +14,12 @@ public class Board {
     final String DEFAULT_LOCATION_NAME = "Atlanta";
     private Pawn[] players;
     private Deck<PlayerCard> playerDeck;
+    private Deck<PlayerCard> playerDiscardDeck;
     private Deck<InfectionCard> infectionDeck;
+    private Deck<InfectionCard> infectionDiscardDeck;
     private int infectionRate;
+    private int outbreakLevel;
+    private Diseases diseases = new Diseases();
 
 
 
@@ -48,12 +52,22 @@ public class Board {
         //Need to add logic to increase infection rate.
     }
 
+    public int getOutbreakLevel() {
+        return outbreakLevel;
+    }
+
+    public void setOutbreakLevel(int outbreakLevel) {
+        this.outbreakLevel = outbreakLevel;
+    }
+
     public Board() {
         this.setInfectionRate(2);
+        this.setOutbreakLevel(0);
         this.initLocations();
         this.initPlayers();
         this.initDifficulty();
         this.initDecks();
+        this.initialInfect();
 
     }
 
@@ -67,7 +81,10 @@ public class Board {
             return locations.get(locationName);
         }
     }
+    private void initialInfect(){
+        InfectionCard drawn = (InfectionCard)infectionDeck.pop();
 
+    }
     private void initLocations(){
         System.out.println("Initializing Locations...");
         locations = new HashMap<String,Location>();
@@ -126,6 +143,7 @@ public class Board {
         int fieldNumber;
         try {
             reader = new BufferedReader(new FileReader(locationCSV));
+            HashSet<String> diseaseColors = new HashSet<String>();
             while ((line = reader.readLine())!= null){
                 fieldNumber=2;
                 String field[] = line.split(",");
@@ -134,6 +152,8 @@ public class Board {
                 String color = field[1];
                 Location currentLocation = addLocationToBoard(primaryLocationName);
                 currentLocation.setColor(color);
+                diseaseColors.add(color);
+
                 while (fieldNumber<field.length){
                     if (field[fieldNumber].length()>0){
                         Location connection =  addLocationToBoard(field[fieldNumber]);
@@ -142,6 +162,10 @@ public class Board {
                     }
                     fieldNumber++;
                 }
+            }
+            for (String color: diseaseColors){
+                System.out.println("Adding the " + color + " disease.");
+                diseases.addDisease(color,"resources/diseaseCubes/"+color+"_disease.png",24);
             }
             reader.close();
         } catch (FileNotFoundException e) {
