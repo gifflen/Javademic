@@ -239,6 +239,21 @@ public class Diseases
     public int getPosition()
     {
         return position;
-    } 
+    }
+
+
+    public Disease getDiseaseByName(String name){
+        String thisDiseaseName;
+
+        for(Disease disease: diseases){
+            if(disease != null){
+                thisDiseaseName = disease.getName();
+                if (thisDiseaseName.equals(name)){
+                   return disease;
+               }
+            }
+        }
+        return null;
+    }
     
 }
