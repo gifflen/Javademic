@@ -1,5 +1,7 @@
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Scanner;
 
 /**
  * Created by IntelliJ IDEA.
@@ -199,7 +201,7 @@ public class Board {
 
     private int getIntInput(String message,int lowBound,int highBound){
         Scanner userInputScanner = new Scanner(System.in);
-        String userInput = "";
+        String userInput;
         int inputInt=0;
         do{
             System.out.println(message);

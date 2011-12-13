@@ -61,7 +61,7 @@ public class Location {
 
     public void infect(Disease incDisease){
         if (presentDiseases.containsKey(incDisease)){
-            int currentInfectionCount = presentDiseases.get(incDisease).intValue();
+            int currentInfectionCount = presentDiseases.get(incDisease);
             if (currentInfectionCount<3){
                 presentDiseases.put(incDisease,currentInfectionCount+1);
                 incDisease.addToBoard(1);
