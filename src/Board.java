@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,7 +17,7 @@ public class Board {
     private Pawn[] players;
     private Deque<PlayerCard> playerDeck;
     private Deque<InfectionCard> infectionDeck;
-
+    private int infectionRate;
 
 
 
@@ -39,8 +38,20 @@ public class Board {
         return numPlayers;
     }
 
-    public Board() {
+    public int getInfectionRate() {
+        return infectionRate;
+    }
 
+    public void setInfectionRate(int infectionRate) {
+        this.infectionRate = infectionRate;
+    }
+
+    public void increaseInfectionRate(){
+        //Need to add logic to increase infection rate.
+    }
+
+    public Board() {
+        this.setInfectionRate(2);
         this.initLocations();
         this.initPlayers();
         this.initDifficulty();
