@@ -82,7 +82,20 @@ public class Board {
         }
     }
     private void initialInfect(){
-        InfectionCard drawn = (InfectionCard)infectionDeck.pop();
+        System.out.println("Drawing Cards for initial infection");
+        //Draw 3 infect with 3
+        for (int i =3; i>0 ;i--){
+          for (int j=0;j<3;j++){
+              InfectionCard drawn = (InfectionCard)infectionDeck.pop();
+              System.out.println("Drew " + drawn);
+              Location cardLocation = drawn.getLocation();
+              System.out.println("Infecting "+drawn+ " with " + i +" disease cubes");
+              Disease diseaseToInfect =diseases.getDiseaseByName(cardLocation.getColor());
+              cardLocation.infect(diseaseToInfect,i);
+              System.out.println("Discarding " + drawn);
+              playerDiscardDeck.push(drawn);
+          }
+        }
 
     }
     private void initLocations(){
@@ -115,6 +128,8 @@ public class Board {
         System.out.println("Initializing Decks...");
         playerDeck = new Deck<PlayerCard>();
         infectionDeck = new Deck<InfectionCard>();
+        playerDiscardDeck = new Deck<PlayerCard>();
+        infectionDiscardDeck = new Deck<InfectionCard>();
         System.out.println("Adding cards to deck.");
         for (Location location : locations.values()) {
             PlayerCard playerCard = new PlayerCard(location);
@@ -152,7 +167,15 @@ public class Board {
                 String color = field[1];
                 Location currentLocation = addLocationToBoard(primaryLocationName);
                 currentLocation.setColor(color);
-                diseaseColors.add(color);
+                Disease baseDisease;
+                if (!diseaseColors.contains(color)){
+                    System.out.println("Adding the " + color + " disease.");
+                    diseases.addDisease(color,"resources/diseaseCubes/"+color+"_disease.png",24);
+                    diseaseColors.add(color);
+                }
+                baseDisease = diseases.getDiseaseByName(color);
+                currentLocation.setBaseDisease(baseDisease);
+
 
                 while (fieldNumber<field.length){
                     if (field[fieldNumber].length()>0){
@@ -162,10 +185,6 @@ public class Board {
                     }
                     fieldNumber++;
                 }
-            }
-            for (String color: diseaseColors){
-                System.out.println("Adding the " + color + " disease.");
-                diseases.addDisease(color,"resources/diseaseCubes/"+color+"_disease.png",24);
             }
             reader.close();
         } catch (FileNotFoundException e) {
