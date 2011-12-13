@@ -4,7 +4,11 @@ import java.util.HashMap;
  */
 public class Location {
     private String locationName;
-
+    private String color;
+    private HashMap<String,Location> connections;
+    private HashMap<Disease,Integer> presentDiseases;
+    private boolean outBreakThisTurn;
+    private Disease baseDisease;
     public String getColor() {
         return color;
     }
@@ -13,19 +17,26 @@ public class Location {
         this.color = color;
     }
 
-
-    private String color;
-    private HashMap<String,Location> connections;
-
     public void addConnection(Location connection){
         if (!connections.containsKey(connection.getLocationName())){
             connections.put(connection.getLocationName(),connection);
         }
     }
 
+    public Disease getBaseDisease() {
+        return baseDisease;
+    }
+
+    public void setBaseDisease(Disease baseDisease) {
+        this.baseDisease = baseDisease;
+    }
+
     public Location(String locationName) {
         this.locationName = locationName.trim();
         this.connections = new HashMap<String,Location>();
+        this.presentDiseases = new HashMap<Disease, Integer>();
+        this.outBreakThisTurn = false;
+
     }
 
     public String getLocationName() {
@@ -46,6 +57,39 @@ public class Location {
             out+= location + ";";
         }
         return out;
+    }
+
+    public void infect(Disease incDisease){
+        if (presentDiseases.containsKey(incDisease)){
+            int currentInfectionCount = presentDiseases.get(incDisease).intValue();
+            if (currentInfectionCount<3){
+                presentDiseases.put(incDisease,currentInfectionCount+1);
+                incDisease.addToBoard(1);
+                System.out.println("Reamining cubes of " + incDisease.getName() + ": " + incDisease.getPile());
+            }else {
+                if (!outBreakThisTurn){
+                    outbreak(incDisease);
+                }
+            }
+        }else{
+            presentDiseases.put(incDisease,1);
+            incDisease.addToBoard(1);
+            System.out.println("Reamining cubes of " + incDisease.getName() + ": " + incDisease.getPile());
+        }
+
+    }
+
+    public void infect(Disease incDisease,int count){
+       for (int i = 0; i<count;i++){
+           infect(incDisease);
+       }
+    }
+
+    public void outbreak(Disease incDisease){
+        this.outBreakThisTurn = true;
+        for (Location connection: connections.values()){
+            connection.infect(incDisease);
+        }
     }
 
     public static String cleanString(String incLocationName){
