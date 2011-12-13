@@ -14,4 +14,8 @@ public class PlayerCard {
 
 
     }
+    @Override
+    public String toString() {
+        return this.location.getLocationName();
+    }
 }
