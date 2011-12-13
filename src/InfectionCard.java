@@ -12,4 +12,9 @@ public class InfectionCard {
     public Location getLocation() {
         return location;
     }
+
+    @Override
+    public String toString() {
+        return this.location.getLocationName();
+    }
 }
