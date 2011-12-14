@@ -38,6 +38,18 @@ public class ResearchStationCollection
     }
     
     /**
+     * Creates a default collection of 6 ResearchStations
+     * @postcondition
+     *  max contains the maximum number of research stations 6
+     *  stations can only hold 6 stations
+     *  count is set to 0
+     */
+    public ResearchStationCollection()
+    {        
+        this(6);
+    }
+    
+    /**
      * Adds a Research Station to location
      * @param location
      *  The location to add a research station to
@@ -51,6 +63,7 @@ public class ResearchStationCollection
         if (count < max)
         {
             stations[count] = new ResearchStation(location);
+            count++;
             return true;
         }
         
