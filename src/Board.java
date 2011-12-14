@@ -14,13 +14,15 @@ public class Board {
     private int numPlayers;
     private int difficulty;
     final String DEFAULT_LOCATION_NAME = "Atlanta";
-    private Pawn[] players;
+    private Player[] players;
+    private int currentPlayer;
     private Deck<PlayerCard> playerDeck;
     private Deck<PlayerCard> playerDiscardDeck;
     private Deck<InfectionCard> infectionDeck;
     private Deck<InfectionCard> infectionDiscardDeck;
     private int infectionRate;
     private int outbreakLevel;
+    private Actions actions = new Actions();
     private Diseases diseases = new Diseases();
 
 
@@ -111,10 +113,16 @@ public class Board {
         System.out.println("Initializing Players...");
         numPlayers = getIntInput("How many players will play in this game? 2-4: ", 2, 4);
         System.out.println("You've Chosen to play with " + numPlayers + " Players.");
-        players = new Pawn[numPlayers];
+        players = new Player[numPlayers];
+        for (int i = 0 ; i<numPlayers;i++){
+            players[i] = new Player(defaultLocation);
+        }
         //Choose Roles
         //Determine Turn Order
         //Sort pawns
+
+        currentPlayer = 0;
+
     }
 
     public void initDifficulty(){
@@ -217,6 +225,21 @@ public class Board {
         return inputInt;
     }
 
+    public Player getCurrentPlayer() {
+        return players[currentPlayer];
+    }
 
+    public void startTurn(){
+        players[currentPlayer].setRemainingActions(3);
+        while (players[currentPlayer].getRemainingActions()>0){
+            System.out.println("You have " + players[currentPlayer].getRemainingActions() + " remaining actions. ");
+            actions.takeAction(players[currentPlayer]);
+        }
+        if (currentPlayer<players.length){
+            currentPlayer++;
+        }else{
+            currentPlayer=0;
+        }
 
+    }
 }
