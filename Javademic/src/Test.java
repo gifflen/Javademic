@@ -1,4 +1,7 @@
 
+import UnitTests.LocationUnitTest;
+
+
 
 
 /**
@@ -17,6 +20,7 @@ public class Test
      */
     public static void main(String[] args)
     {         
+        LocationUnitTest.main(args);
         
     }
 }
