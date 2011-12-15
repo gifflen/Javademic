@@ -58,6 +58,25 @@ public class Disease
         cured = false;
         eradicated = false;        
     }
+    
+    /**
+     * Constructs Disease Object with default 24 intialPile
+     * @param initialName
+     *  The initial name of the disease
+     * @param initialImgLoc
+     *  The initial location of the image
+     * @precondition
+     *  intialImgLoc must be a valid location
+     * @postcondition
+     *  A Disease object has been create with initialName, intialImgLoc, and 
+     *  24 initialPile.  numOnBoard is 0.  cured and eradicated are false.
+     * @exception IllegalArgumentException
+     *  initialImgLoc does not exist
+     */
+    public Disease(String initialName, String initialImgLoc)
+    {
+        this(initialName, initialImgLoc, 24);
+    }
 
     /**
      * Get this diseases name
