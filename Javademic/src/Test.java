@@ -1,6 +1,4 @@
 
-import UnitTests.ResearchStationCollectionTest;
-import UnitTests.ResearchStationTest;
 
 
 /**
@@ -18,9 +16,7 @@ public class Test
      * @param args the command line arguments
      */
     public static void main(String[] args)
-    {              
-        ResearchStationTest.main(args);
-        ResearchStationCollectionTest.main(args);
+    {         
         
     }
 }

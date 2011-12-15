@@ -1,0 +1,29 @@
+package Cards;
+
+import java.util.Collections;
+import java.util.Stack;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: Gifflen
+ */
+public class Deck<E> extends Stack {
+
+    public E peekLast(){
+       return (E) this.lastElement();
+    }
+    public E popLast(){
+        E lastElement = (E)this.lastElement();
+        this.remove(this.elementCount-1);
+        return lastElement;
+    }
+    public void shuffle(){
+        System.out.println(this);
+        Collections.shuffle(this);
+        System.out.println(this);
+    }
+
+
+
+
+}

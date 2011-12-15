@@ -9,7 +9,6 @@ package Disease;
  */
 public class Diseases
 {
-    
     private Disease[] diseases;
     private int position;
     private boolean allCured;
@@ -242,6 +241,21 @@ public class Diseases
     public int getPosition()
     {
         return position;
-    } 
+    }
+
+
+    public Disease getDiseaseByName(String name){
+        String thisDiseaseName;
+
+        for(Disease disease: diseases){
+            if(disease != null){
+                thisDiseaseName = disease.getName();
+                if (thisDiseaseName.equals(name)){
+                   return disease;
+               }
+            }
+        }
+        return null;
+    }
     
 }
