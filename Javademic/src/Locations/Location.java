@@ -12,10 +12,23 @@ public class Location {
     private HashMap<Disease,Integer> presentDiseases;
     private boolean outBreakThisTurn;
     private Disease baseDisease;
+    
+    /**
+     * Get the Locations color
+     * @return 
+     *  The color of this location
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Set the color of this location
+     * @param color 
+     *  The color to set this location to
+     * @postcondition
+     *  The color of this location has been set to color
+     */
     public void setColor(String color) {
         this.color = color;
     }
@@ -26,14 +39,31 @@ public class Location {
         }
     }
 
+    /**
+     * Get the Base Disease for this location
+     * @return 
+     *  the Base Disease for this class
+     */
     public Disease getBaseDisease() {
         return baseDisease;
     }
 
+    /**
+     * Set the Base Disease for this location
+     * @param baseDisease 
+     *  The disease to set Base Disease to
+     * @postcondition
+     *  baseDisease for this location has been set to baseDisease
+     */
     public void setBaseDisease(Disease baseDisease) {
         this.baseDisease = baseDisease;
     }
 
+    /**
+     * Constructs a location with locationName
+     * @param locationName 
+     *  The location has been constructed with locationName as its name
+     */
     public Location(String locationName) {
         this.locationName = locationName.trim();
         this.connections = new HashMap<String,Location>();
@@ -42,6 +72,11 @@ public class Location {
 
     }
 
+    /**
+     * Gets this locations name
+     * @return 
+     *  The name of this location
+     */
     public String getLocationName() {
         return locationName;
     }
@@ -50,6 +85,13 @@ public class Location {
         return connections;
     }
 
+    /**
+     * Sets the name of this location
+     * @param locationName 
+     *  the new name of this location
+     * @postcondition
+     *  the name of this location is set to locationName
+     */
     public void setLocationName(String locationName) {
         this.locationName = locationName;
     }
