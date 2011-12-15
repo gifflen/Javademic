@@ -1,6 +1,7 @@
 
-import UnitTests.DiseaseUnitTest;
-import UnitTests.DiseasesUnitTest;
+import UnitTests.ResearchStationCollectionTest;
+import UnitTests.ResearchStationTest;
+
 
 /**
  * Calls test classes
@@ -18,7 +19,8 @@ public class Test
      */
     public static void main(String[] args)
     {              
-        DiseaseUnitTest.main(args);
-        DiseasesUnitTest.main(args);
+        ResearchStationTest.main(args);
+        ResearchStationCollectionTest.main(args);
+        
     }
 }
