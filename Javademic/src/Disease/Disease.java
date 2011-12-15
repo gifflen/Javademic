@@ -11,6 +11,7 @@ import java.io.File;
  */
 public class Disease
 {
+    
     private String name;
     private File imgFile;
     private int pile;

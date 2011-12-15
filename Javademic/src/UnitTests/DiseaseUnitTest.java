@@ -12,6 +12,7 @@ import Disease.Disease;
  */
 public class DiseaseUnitTest
 {
+    
     private static Disease redDisease;
     private static Disease blueDisease;
     private static Disease yellowDisease;

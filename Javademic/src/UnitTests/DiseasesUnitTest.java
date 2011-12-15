@@ -11,7 +11,8 @@ import Disease.Diseases;
  * @course CIS 112
  */
 public class DiseasesUnitTest
-{     
+{ 
+    
     private static Diseases standardDiseases;
     private static Diseases experimentalDiseases;
     private static Disease spanishFlu = new Disease("Spanish Flu", 

@@ -9,6 +9,7 @@ package Disease;
  */
 public class Diseases
 {
+    
     private Disease[] diseases;
     private int position;
     private boolean allCured;
