@@ -33,6 +33,14 @@ public class Location {
         this.color = color;
     }
 
+    /**
+     * Adds a connection to the parameter connection
+     * @param connection 
+     *  The location to add a connection to
+     * @postcondition
+     *  This location has a connection to param connection and
+     *  param connection has a connection to this location
+     */
     public void addConnection(Location connection){
         if (!connections.containsKey(connection.getLocationName())){
             connections.put(connection.getLocationName(),connection);
@@ -86,6 +94,11 @@ public class Location {
         return locationName;
     }
 
+    /**
+     * Gets the connections of this location
+     * @return 
+     *  The connections of this location as a HashMap<String,Location>
+     */
     public HashMap<String,Location> getConnections() {
         return connections;
     }
@@ -101,6 +114,11 @@ public class Location {
         this.locationName = locationName;
     }
 
+    /**
+     * Lists the location connections as a string
+     * @return 
+     *  A String of this locations connections names
+     */
     public String listLocations(){
         String out = "";
         for(String location: connections.keySet()){
@@ -128,6 +146,38 @@ public class Location {
         }
 
     }
+    
+    /**
+     * Lists the location connections as a string
+     * @return 
+     *  A String of this locations connections names
+     */
+    public String listDiseases(){
+        String out = "";
+        
+        for(Disease disease: presentDiseases.keySet()){
+            out+= disease.getName() + ";";
+        }
+        
+        out+= "\n";
+        
+        for(Integer count: presentDiseases.values()){
+            out+= count + ";";
+        }
+        
+        return out;
+    }
+    
+    /**
+     * Gets the present diseases
+     * @return 
+     *  A HashMap<Disease, Integer> of the present diseases
+     */
+    public HashMap<Disease, Integer> getPresentDiseases()
+    {
+        return presentDiseases;
+    }
+            
 
     public void infect(Disease incDisease,int count){
        for (int i = 0; i<count;i++){
