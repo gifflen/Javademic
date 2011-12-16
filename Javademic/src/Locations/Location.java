@@ -10,8 +10,16 @@ public class Location {
     private String color;
     private HashMap<String,Location> connections;
     private HashMap<Disease,Integer> presentDiseases;
+
+    public HashMap<Disease, Integer> getPresentDiseases() {
+        return presentDiseases;
+    }
     private boolean outBreakThisTurn;
     private Disease baseDisease;
+
+    public boolean outBreakThisTurn() {
+        return outBreakThisTurn;
+    }
     
     /**
      * Get the Locations color
@@ -128,6 +136,7 @@ public class Location {
     }
 
     public void infect(Disease incDisease){
+        
         if (presentDiseases.containsKey(incDisease)){
             int currentInfectionCount = presentDiseases.get(incDisease);
             if (currentInfectionCount<3){
@@ -180,12 +189,14 @@ public class Location {
             
 
     public void infect(Disease incDisease,int count){
-       for (int i = 0; i<count;i++){
+       System.out.println("Infecting " + locationName + " with " + incDisease.getName());
+        for (int i = 0; i<count;i++){
            infect(incDisease);
        }
     }
 
     public void outbreak(Disease incDisease){
+        System.out.println("OUTBREAK AT " +  locationName + " of " + incDisease.getName());
         this.outBreakThisTurn = true;
         for (Location connection: connections.values()){
             connection.infect(incDisease);
@@ -203,5 +214,16 @@ public class Location {
                 "locationName='" + locationName + '\'' +
                 ", connections=" + this.listLocations() +
                 '}';
+    }
+    
+    public void printDiseases(){
+        String message="";
+        if (!presentDiseases.isEmpty()){
+            message+=locationName + " ## ";
+            for (Disease disease : presentDiseases.keySet()){
+                message+=disease.getName() + ":" + presentDiseases.get(disease)+ " # ";
+            }
+            System.out.println(message);
+        }
     }
 }

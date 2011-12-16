@@ -11,6 +11,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.EmptyStackException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,7 +37,16 @@ public class Board {
     private Actions actions = new Actions();
     private Diseases diseases = new Diseases();
     private ResearchStationCollection researchStations;
+    private boolean gameLoss =false;
+    private boolean gameWin =false;
 
+    public boolean isGameLost() {
+        return gameLoss;
+    }
+
+    public boolean isGameWon() {
+        return gameWin;
+    }
 
     public int getDifficulty() {
         return difficulty;
@@ -292,7 +302,14 @@ public class Board {
         //Get next card
         PlayerCard[] drawnCards= new PlayerCard[DRAWS_PER_TURN];  
         for(int i =0; i<DRAWS_PER_TURN;i++){
-            drawnCards[i] = (PlayerCard)playerDeck.pop();
+            try{
+                drawnCards[i] = (PlayerCard)playerDeck.pop();
+            }catch(EmptyStackException e){
+                System.out.println("RAN OUT OF PLAYER CARDS");
+                gameLoss = true;
+                return;
+            }
+            
         } 
         
         for (int i =0; i<DRAWS_PER_TURN;i++){
@@ -309,8 +326,23 @@ public class Board {
                 
         }
         
+        InfectionCard drawnInfectCard;
+        for (int i =0; i<infectionRate;i++){
+            try{
+                drawnInfectCard = (InfectionCard)infectionDeck.pop();
+                this.infectLocationByCard(drawnInfectCard,1);
+                infectionDiscardDeck.push(drawnInfectCard);
+            }catch(EmptyStackException e){
+                System.out.println("Ran out of infection cards");
+                infectionDiscardDeck.shuffle();
+                infectionDeck.addAll(infectionDiscardDeck);
+                infectionDiscardDeck.clear();
+            }
+
+            this.cleanUpOutBreaks();
+        }
         
-        
+        this.infectionReport();
         if (currentPlayer<players.length-1){
             currentPlayer++;
         }else{
@@ -335,8 +367,19 @@ public class Board {
         infectionDiscardDeck.shuffle();
         while (infectionDiscardDeck.peek()!=null){
             infectionDeck.add(infectionDiscardDeck.pop());
+        }   
+    }
+    private void infectionReport(){
+        System.out.println("INFECTION REPORT");
+        for (Location location : locations.values()){
+            location.printDiseases();
         }
-        
-        
+    }
+    private void cleanUpOutBreaks(){
+        for (Location location: locations.values()){
+            if (location.outBreakThisTurn()==true){
+                this.iterateOutbreak();
+            }
+        }
     }
 }

@@ -59,6 +59,7 @@ public class Player {
     
     public void displayHand(){
         PlayerCard card;
+        System.out.println("Your current hand: ");
         for (int i =0; i<hand.length();i++){
            card = (PlayerCard)hand.get(i); 
            Location cardsLocation = card.getLocation();
