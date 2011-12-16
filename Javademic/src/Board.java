@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class Board {
     private HashMap<String,Location> locations =  new HashMap<String, Location>();
-    private File locationCSV = new File("src\\Locations.csv");
+    private File locationCSV = new File("src\\Locations\\Locations.csv");
     private Location defaultLocation;
     private int numPlayers;
     private int difficulty;
@@ -187,7 +187,7 @@ public class Board {
                 Disease baseDisease;
                 if (!diseaseColors.contains(color)){
                     System.out.println("Adding the " + color + " disease.");
-                    diseases.addDisease(color,"resources/diseaseCubes/"+color+"_disease.png",24);
+                    diseases.addDisease(color,"tempResources/diseaseCubes/"+color+"_disease.png",24);
                     diseaseColors.add(color);
                 }
                 baseDisease = diseases.getDiseaseByName(color);
