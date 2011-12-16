@@ -18,8 +18,13 @@ public class PlayerCard {
 
 
     }
+    
+    public void displayCard(){
+        System.out.println(this.location.getLocationName() + " : " +  this.location.getBaseDisease());
+    }
+    
     @Override
     public String toString() {
-        return this.location.getLocationName();
+        return (this.location.getLocationName());
     }
 }

@@ -257,5 +257,12 @@ public class Disease
         }
         
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+    
+    
     
 }

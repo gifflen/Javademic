@@ -5,6 +5,8 @@ import Disease.Diseases;
 import Cards.Deck;
 import Cards.PlayerCard;
 import Cards.InfectionCard;
+import Roles.*;
+import ResearchStation.*;
 import java.io.*;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,6 +23,8 @@ public class Board {
     private int numPlayers;
     private int difficulty;
     final String DEFAULT_LOCATION_NAME = "Atlanta";
+    final int DRAWS_PER_TURN=2;
+    private int initalPlayerCards;
     private Player[] players;
     private int currentPlayer;
     private Deck<PlayerCard> playerDeck;
@@ -31,7 +35,7 @@ public class Board {
     private int outbreakLevel;
     private Actions actions = new Actions();
     private Diseases diseases = new Diseases();
-
+    private ResearchStationCollection researchStations;
 
 
     public int getDifficulty() {
@@ -75,9 +79,12 @@ public class Board {
         this.setInfectionRate(2);
         this.setOutbreakLevel(0);
         this.initLocations();
-        this.initPlayers();
+        this.initReasearchStations();
         this.initDifficulty();
         this.initDecks();
+        this.initPlayers();
+        this.initialDraw();
+        this.initEpidemics();
         this.initialInfect();
 
     }
@@ -98,16 +105,25 @@ public class Board {
         for (int i =3; i>0 ;i--){
           for (int j=0;j<3;j++){
               InfectionCard drawn = (InfectionCard)infectionDeck.pop();
-              System.out.println("Drew " + drawn);
-              Location cardLocation = drawn.getLocation();
-              System.out.println("Infecting "+drawn+ " with " + i +" disease cubes");
-              Disease diseaseToInfect =diseases.getDiseaseByName(cardLocation.getColor());
-              cardLocation.infect(diseaseToInfect,i);
-              System.out.println("Discarding " + drawn);
-              playerDiscardDeck.push(drawn);
+              this.infectLocationByCard(drawn,i);
+              infectionDiscardDeck.push(drawn);
           }
         }
 
+    }
+    private void infectLocationByCard(InfectionCard card,int numToInfect){
+        System.out.println("Drew " + card);
+              Location cardLocation = card.getLocation();
+              System.out.println("Infecting "+card+ " with " + numToInfect +" disease cubes");
+              Disease diseaseToInfect =diseases.getDiseaseByName(cardLocation.getColor());
+              cardLocation.infect(diseaseToInfect,numToInfect);
+              System.out.println("Discarding " + card);
+        
+    }
+    
+    private void initReasearchStations(){
+        researchStations = new ResearchStationCollection();
+        researchStations.addStation(defaultLocation);
     }
     private void initLocations(){
         System.out.println("Initializing Locations...");
@@ -135,9 +151,9 @@ public class Board {
     public void initDifficulty(){
         System.out.println("Initializing Difficulty...");
         difficulty = getIntInput("Please Select Difficulty Level\n" +
-                            "1. Introductory\n" +
-                            "2. Normal \n" +
-                            "3. Heroic",1,3);
+                            "1. Introductory : 4 Epidemics\n" +
+                            "2. Normal : 5 Epidemics\n" +
+                            "3. Heroic : 6 Epidemics",1,3);
        System.out.println("You've Chosen to play at the " + difficulty + " difficulty level");
     }
 
@@ -164,7 +180,37 @@ public class Board {
 
     }
 
-
+    public void initialDraw(){
+        int initialHandSize = 0;
+        switch(players.length){
+            case 2: initialHandSize=4;break;
+            case 3: initialHandSize=3;break;
+            case 4: initialHandSize=2;break;        
+        }
+        for (Player player : players){
+            for (int i = 0; i <initialHandSize;i++ ){
+                player.addCardToHand((PlayerCard)playerDeck.pop());
+            }
+            
+        }
+    }
+    
+    public void initEpidemics(){
+        int numberOfPiles= 0;
+        switch(difficulty){
+            case 1:numberOfPiles=4;break;
+            case 2:numberOfPiles=5;break;
+            case 3:numberOfPiles=6;break;
+        }
+        
+        //Split remaining PlayerCards into numberOfPiles
+        //Add epidemic card to each pile
+        //Shuffle Pile
+        //clear PlayerDeck
+        //Add each pile back into the playerCardDeck 
+        
+    }
+    
     public Location getLocationByName(String locationName){
         return locations.get(Location.cleanString(locationName));
     }
@@ -235,18 +281,62 @@ public class Board {
     public Player getCurrentPlayer() {
         return players[currentPlayer];
     }
-
+  
     public void startTurn(){
         players[currentPlayer].setRemainingActions(3);
         while (players[currentPlayer].getRemainingActions()>0){
             System.out.println("You have " + players[currentPlayer].getRemainingActions() + " remaining actions. ");
+            players[currentPlayer].displayHand();
             actions.takeAction(players[currentPlayer]);
         }
-        if (currentPlayer<players.length){
+        //Get next card
+        PlayerCard[] drawnCards= new PlayerCard[DRAWS_PER_TURN];  
+        for(int i =0; i<DRAWS_PER_TURN;i++){
+            drawnCards[i] = (PlayerCard)playerDeck.pop();
+        } 
+        
+        for (int i =0; i<DRAWS_PER_TURN;i++){
+            boolean isEpidemic = false;
+            //check for epidemic
+            
+            
+            if (isEpidemic){
+               playerDiscardDeck.add(drawnCards[i]);
+               this.epidemic();
+            }else{
+               players[currentPlayer].addCardToHand(drawnCards[i]); 
+            }
+                
+        }
+        
+        
+        
+        if (currentPlayer<players.length-1){
             currentPlayer++;
         }else{
             currentPlayer=0;
         }
-
+        
+        
+        
+    }
+    private void iterateInfectionRate(){
+        infectionRate++;
+    }
+    private void iterateOutbreak(){
+        
+    }
+    private void epidemic(){
+        System.out.println("EPIDEMIC!!!");
+        iterateInfectionRate();
+        InfectionCard drawnCard = infectionDeck.popLast();
+        infectLocationByCard(drawnCard,3);
+        infectionDiscardDeck.add(drawnCard);
+        infectionDiscardDeck.shuffle();
+        while (infectionDiscardDeck.peek()!=null){
+            infectionDeck.add(infectionDiscardDeck.pop());
+        }
+        
+        
     }
 }
