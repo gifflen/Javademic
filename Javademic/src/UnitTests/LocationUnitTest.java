@@ -2,6 +2,7 @@ package UnitTests;
 
 import Disease.Disease;
 import Locations.Location;
+import java.util.Iterator;
 
 /**
  * Tests the Location Class
@@ -37,6 +38,10 @@ public class LocationUnitTest
         createLocs();
         
         testSettersAndGetters();
+        
+        testAddConnection();
+        
+        testInfect();
         
         System.out.println("### End Location Test ###");
     }
@@ -129,5 +134,67 @@ public class LocationUnitTest
         
         System.out.println("*** End Location Setter and Getter Test ***\n");
     }
+
+    private static void testAddConnection()
+    {
+        System.out.println("*** Begin Add Connection Test ***\n");
+        
+        System.out.println("Connect beijing to tehran and atlanta");
+        beijing.addConnection(tehran);
+        beijing.addConnection(atlanta);
+        
+        System.out.println("beijing Connections:");
+        System.out.println(beijing.getConnections());
+        System.out.println("");
+        
+        System.out.println("Connect tehran to atlanta");
+        tehran.addConnection(atlanta);
+        
+        System.out.println("tehran Connections:");
+        System.out.println(tehran.getConnections());
+        System.out.println("");
+        
+        System.out.println("Connect atlanta to lima");
+        atlanta.addConnection(lima);
+        
+        System.out.println("atlanta Connections:");
+        System.out.println(atlanta.getConnections());
+        System.out.println("");
+        
+        System.out.println("Connect lima to tehran");
+        lima.addConnection(tehran);
+        
+        System.out.println("tehran Connections:");
+        System.out.println(tehran.getConnections());
+        
+        System.out.println("lima Connections:");
+        System.out.println(lima.getConnections());
+        System.out.println("");     
+        
+        System.out.println("Listing Location Connections");
+        System.out.println("beijing: " + beijing.listLocations());
+        System.out.println("tehran: " + tehran.listLocations());
+        System.out.println("atlanta: " + atlanta.listLocations());
+        System.out.println("lima: " + lima.listLocations());
+        System.out.println("");
+        
+        
+        System.out.println("*** End Add Connection Test ***\n");
+    }
+
+    private static void testInfect()
+    {
+        System.out.println("*** Begin Infection Test ***\n");
+        
+        System.out.println("Infect beijing with one redDisease");
+        beijing.infect(redDisease);
+        
+        System.out.println("beijing: ");
+        System.out.println(beijing.listDiseases());
+        
+        
+        System.out.println("*** End Infection Test ***\n");
+    }
+
     
 }
