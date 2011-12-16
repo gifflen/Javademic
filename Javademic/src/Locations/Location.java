@@ -10,10 +10,6 @@ public class Location {
     private String color;
     private HashMap<String,Location> connections;
     private HashMap<Disease,Integer> presentDiseases;
-
-    public HashMap<Disease, Integer> getPresentDiseases() {
-        return presentDiseases;
-    }
     private boolean outBreakThisTurn;
     private Disease baseDisease;
 
