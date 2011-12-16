@@ -37,6 +37,11 @@ public class Location {
         if (!connections.containsKey(connection.getLocationName())){
             connections.put(connection.getLocationName(),connection);
         }
+        
+        if (!connection.connections.containsKey(this.getLocationName()))
+        {
+            connection.connections.put(locationName, this);
+        }
     }
 
     /**
