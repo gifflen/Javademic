@@ -1,6 +1,9 @@
 /**
  * Created by IntelliJ IDEA.
  * User: Gifflen
+ * 
+ * Infection card class. 
+ * Card adds infection to specific location.
  */
 public class InfectionCard {
     Location location;
