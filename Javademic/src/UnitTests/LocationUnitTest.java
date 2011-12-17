@@ -188,43 +188,45 @@ public class LocationUnitTest
         
         System.out.println("Infect beijing with one redDisease");
         beijing.infect(redDisease);
-        
-        System.out.println("beijing: ");
-        System.out.println(beijing.listDiseases());
+        beijing.printDiseases();
         System.out.println("");
         
         System.out.println("Infect tehran with three blackDisease");
         tehran.infect(blackDisease, 3);
-        
-        System.out.println("tehran: ");
-        System.out.println(tehran.listDiseases());
+        tehran.printDiseases();
         System.out.println("");
         
         System.out.println("Infect atlanta with 2 yellow diseases");
         atlanta.infect(yellowDisease, 2);
-        
-        System.out.println("atalanta: ");
-        System.out.println(atlanta.listDiseases());
+        atlanta.printDiseases();
         System.out.println("");
         
         System.out.println("Infect lima with its baseDisease yellowDisease");
         lima.infect();
-        
-        System.out.println("lima: ");
-        System.out.println(lima.listDiseases());
+        lima.printDiseases();
         System.out.println("");
         
         System.out.println("Infect tehran with one blackDisease to outbreak");
-        tehran.infect();
+        tehran.infect();        
+        tehran.printDiseases();
+        beijing.printDiseases();
+        atlanta.printDiseases();
+        lima.printDiseases();
+        System.out.println("");
         
-        System.out.println("tehran: ");
-        System.out.println(tehran.listDiseases());
-        System.out.println("beijing: ");
-        System.out.println(beijing.listDiseases());
-        System.out.println("atalanta: ");
-        System.out.println(atlanta.listDiseases());
-        System.out.println("lima: ");
-        System.out.println(lima.listDiseases());
+        System.out.println("Infect beijing and atlanta with 2 black diseases");
+        beijing.infect(blackDisease, 2);
+        atlanta.infect(blackDisease, 2);
+        beijing.printDiseases();
+        atlanta.printDiseases();
+        System.out.println("");
+        
+        System.out.println("Infect tehran with blackDisease to test outbreak");
+        tehran.infect();
+        tehran.printDiseases();
+        beijing.printDiseases();
+        atlanta.printDiseases();
+        lima.printDiseases();
         System.out.println("");
         
         
