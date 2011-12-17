@@ -377,7 +377,7 @@ public class Board {
     }
     private void cleanUpOutBreaks(){
         for (Location location: locations.values()){
-            if (location.outBreakThisTurn()==true){
+            if (location.outBreakThisReaction()==true){
                 this.iterateOutbreak();
             }
         }

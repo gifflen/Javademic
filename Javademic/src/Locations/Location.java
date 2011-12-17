@@ -10,11 +10,17 @@ public class Location {
     private String color;
     private HashMap<String,Location> connections;
     private HashMap<Disease,Integer> presentDiseases;
-    private boolean outBreakThisTurn;
+    private boolean outBreakThisReaction;
     private Disease baseDisease;
 
-    public boolean outBreakThisTurn() {
-        return outBreakThisTurn;
+    /**
+     * Check if there was outbreak this reaction
+     * @return 
+     *  True if there was an outbreak this reaction
+     *  False if there was not an outbreak this reaction
+     */
+    public boolean outBreakThisReaction() {
+        return outBreakThisReaction;
     }
     
     /**
@@ -85,7 +91,7 @@ public class Location {
         this.locationName = locationName.trim();
         this.connections = new HashMap<String,Location>();
         this.presentDiseases = new HashMap<Disease, Integer>();
-        this.outBreakThisTurn = false;
+        this.outBreakThisReaction = false;
 
     }
 
@@ -149,7 +155,7 @@ public class Location {
                 incDisease.addToBoard(1);
                 System.out.println("Reamining cubes of " + incDisease.getName() + ": " + incDisease.getPile());
             }else {
-                if (!outBreakThisTurn){
+                if (!outBreakThisReaction){
                     outbreak(incDisease);
                 }
             }
@@ -234,7 +240,7 @@ public class Location {
      */
     private void outbreak(Disease incDisease){
         System.out.println("OUTBREAK AT " +  locationName + " of " + incDisease.getName());
-        this.outBreakThisTurn = true;
+        this.outBreakThisReaction = true;
         for (Location connection: connections.values()){
             connection.infect(incDisease);
         }
