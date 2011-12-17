@@ -4,6 +4,10 @@ import java.util.Stack;
 /**
  * Created by IntelliJ IDEA.
  * User: Gifflen
+ * 
+ * 
+ * Deck class that uses stacks to organize cards
+ * Shuffles and removes cards from deck.
  */
 public class Deck<E> extends Stack {
 
