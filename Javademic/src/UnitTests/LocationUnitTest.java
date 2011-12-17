@@ -2,7 +2,6 @@ package UnitTests;
 
 import Disease.Disease;
 import Locations.Location;
-import java.util.Iterator;
 
 /**
  * Tests the Location Class
@@ -135,6 +134,11 @@ public class LocationUnitTest
         System.out.println("*** End Location Setter and Getter Test ***\n");
     }
 
+    /**
+     * Test the adding of connections
+     * @postcondition
+     *  beijing, tehran, atlanta, and lima have had their connections added
+     */
     private static void testAddConnection()
     {
         System.out.println("*** Begin Add Connection Test ***\n");
@@ -182,6 +186,12 @@ public class LocationUnitTest
         System.out.println("*** End Add Connection Test ***\n");
     }
 
+    /**
+     * Test infections
+     * @postcondition
+     *  beijing, tehran, atlanta, and lima have been infected 
+     *  with multiple diseases
+     */
     private static void testInfect()
     {
         System.out.println("*** Begin Infection Test ***\n");
