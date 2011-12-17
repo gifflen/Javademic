@@ -6,6 +6,8 @@ import java.util.Scanner;
 /**
  * Created by IntelliJ IDEA.
  * User: Gifflen
+ * 
+ * This is setting up the board and inital game settings.
  */
 public class Board {
     private HashMap<String,Location> locations =  new HashMap<String, Location>();
@@ -26,7 +28,7 @@ public class Board {
     private Diseases diseases = new Diseases();
 
 
-
+    // This is setting the diffuclty of the game. 3 difficulty settings
     public int getDifficulty() {
         return difficulty;
     }
@@ -35,7 +37,8 @@ public class Board {
 
         return defaultLocation;
     }
-
+    
+    // Starting location for all the players.
     private void setDefaultLocation(Location defaultLocation) {
         this.defaultLocation = defaultLocation;
     }
@@ -161,7 +164,7 @@ public class Board {
     public Location getLocationByName(String locationName){
         return locations.get(Location.cleanString(locationName));
     }
-
+    
     private void readCSV(){
         String line;
         BufferedReader reader;
