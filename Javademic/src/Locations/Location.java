@@ -131,6 +131,15 @@ public class Location {
         return out;
     }
 
+    /**
+     * Infect this location by adding one disease of incDisease type
+     * @param incDisease 
+     *  the type of disease to increase here
+     * @postcondition
+     *  If there were less than 3 disease of incDisease type, then increase
+     *  the count for incDisease type by one
+     *  If there are 3 disease of incDisease type outbreak this location
+     */
     public void infect(Disease incDisease){
         
         if (presentDiseases.containsKey(incDisease)){
@@ -150,6 +159,19 @@ public class Location {
             System.out.println("Reamining cubes of " + incDisease.getName() + ": " + incDisease.getPile());
         }
 
+    }
+    
+    /**
+     * Infect this location with its baseDisease
+     * @postcondition
+     *  If there were less than 3 disease of baseDisease type, then increase
+     *  the count for baseDisease type by one
+     *  If there are 3 disease of baseDisease type outbreak this location
+     * 
+     */
+    public void infect()
+    {
+        infect(baseDisease);
     }
     
     /**
@@ -184,6 +206,18 @@ public class Location {
     }
             
 
+    /**
+     * Infect this location with incDisease count number of times
+     * @param incDisease
+     *  The type of disease to infect this location with
+     * @param count 
+     *  The number of times to infect this location
+     * @postcondition
+     *  If the count is 3 or less of disease of incDisease type, then increase
+     *  the count for incDisease type by count
+     *  If count would bring the number of disease of incDisease type to 
+     *  3 or more, than increase to 3 and outbreak this location
+     */
     public void infect(Disease incDisease,int count){
        System.out.println("Infecting " + locationName + " with " + incDisease.getName());
         for (int i = 0; i<count;i++){
