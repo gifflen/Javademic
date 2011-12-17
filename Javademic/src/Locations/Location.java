@@ -225,7 +225,14 @@ public class Location {
        }
     }
 
-    public void outbreak(Disease incDisease){
+    /**
+     * Outbreaks incDisease, by infecting each connection with incDisease
+     * @param incDisease 
+     *  The disease type to outbreak
+     * @postcondition
+     *  Each connection to this location has been infected with incDisease
+     */
+    private void outbreak(Disease incDisease){
         System.out.println("OUTBREAK AT " +  locationName + " of " + incDisease.getName());
         this.outBreakThisTurn = true;
         for (Location connection: connections.values()){
@@ -233,11 +240,24 @@ public class Location {
         }
     }
 
+    /**
+     * Cleans the incLocationName String so that it is a proper name
+     * @param incLocationName
+     *  The string to clear
+     * @return 
+     *  incLocationName with its first letter capital
+     */
     public static String cleanString(String incLocationName){
         incLocationName = Character.toUpperCase(incLocationName.charAt(0)) + incLocationName.substring(1).toLowerCase();
         incLocationName= incLocationName.trim();
         return incLocationName;
     }
+    
+    /**
+     * Converts this object to a string
+     * @return 
+     *  A string that shows this locations name, and its connections.
+     */
     @Override
     public String toString() {
         return "Location{" +
@@ -246,6 +266,9 @@ public class Location {
                 '}';
     }
     
+    /**
+     * Prints all Diseases and their counts on this location.
+     */
     public void printDiseases(){
         String message="";
         if (!presentDiseases.isEmpty()){
