@@ -5,6 +5,10 @@ import java.util.*;
  * User: Gifflen
  */
 public class Actions{
+    /**
+     * This is the player's action per turn
+     * as per the game rules they have 4 actions per turn.
+    */
 
     public void takeAction(Player currentPlayer){
         System.out.println("Please select one of the available actions below:");
@@ -23,6 +27,12 @@ public class Actions{
         }
         currentPlayer.useActionPoint();
     }
+    
+    /**
+     * This is the movement action for the player.
+     * As part of their turn. 
+     */
+
 
     public void drive(Player currentPlayer){
         boolean validInput = false;
@@ -51,6 +61,10 @@ public class Actions{
         currentPlayer.setCurrentLocation(connections.get(userInput));
 
     }
+    /**
+     * This is checking how many actions are left
+     * of the player's turn.
+     */
 
 
     private String[] checkAvailableActions(Player currentPlayer){
