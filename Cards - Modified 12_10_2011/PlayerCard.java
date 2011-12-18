@@ -2,6 +2,12 @@ package Cards;
 
 import Location.Location;
 
+
+/**
+ * The player card. To be drawn at each turn from the player deck.
+ * @author Jordan
+ * @course CIS 112 ONLN
+ */
 public class PlayerCard extends Card 
 {
 
