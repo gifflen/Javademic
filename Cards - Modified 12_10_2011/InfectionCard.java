@@ -2,6 +2,12 @@ package Cards;
 
 import Location.Location;
 
+/**
+ * The infection card, drawn at the end of each turn from the infection deck
+ * @author Max/ Modified by Jordan to fit new card structure
+ * @course CIS 112 ONLN
+ */
+
 public class InfectionCard extends Card {
 	
 	Location location;
@@ -35,6 +41,10 @@ public class InfectionCard extends Card {
             }		
 	}
 	
+	/**
+	 * Gets the location on the card
+	 * @return location
+	 */
     public Location getLocation()
     {
         return location;
