@@ -244,6 +244,13 @@ public class Diseases
     }
 
 
+    /**
+     * Gets a disease by its names
+     * @param name
+     *  The name of the disease to get
+     * @return 
+     *  The disease with a name of param name
+     */
     public Disease getDiseaseByName(String name){
         String thisDiseaseName;
 

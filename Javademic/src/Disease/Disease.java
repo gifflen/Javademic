@@ -258,6 +258,11 @@ public class Disease
         
     }
 
+    /**
+     * Converts this Disease to a String
+     * @return 
+     *  The name of this Disease
+     */
     @Override
     public String toString() {
         return this.name;

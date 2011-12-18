@@ -1,5 +1,9 @@
 
+import UnitTests.DiseaseUnitTest;
+import UnitTests.DiseasesUnitTest;
 import UnitTests.LocationUnitTest;
+import UnitTests.ResearchStationCollectionTest;
+import UnitTests.ResearchStationTest;
 
 
 
@@ -20,6 +24,10 @@ public class Test
      */
     public static void main(String[] args)
     {         
+        ResearchStationTest.main(args);
+        ResearchStationCollectionTest.main(args);
+        DiseaseUnitTest.main(args);
+        DiseasesUnitTest.main(args);
         LocationUnitTest.main(args);
         
     }
