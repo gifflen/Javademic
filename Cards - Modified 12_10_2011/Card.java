@@ -1,8 +1,10 @@
 package Cards;
 
-/*
+/**
  * Javademic Generic card class
  * This class will contain a generic card object
+ * @author Jordan/Max
+ * @course CIS 112 ONLN
  */
 public class Card {
 	private String name;
@@ -10,15 +12,15 @@ public class Card {
 	private String imageLoc;
 	private boolean discard;
 	
-        /**
-         * Card Constructor 
-         * @param initialImageLoc
-         *  The initial location of the image
-         * @param initialName 
-         *  The initial name of the card
-         * @param type
-         * 	The type of card.
-         */
+    /**
+     * Card Constructor 
+     * @param initialImageLoc
+     *  The initial location of the image
+     * @param initialName 
+     *  The initial name of the card
+     * @param type
+     * 	The type of card.
+     */
 	public Card(String initialImageLoc, String initialName, CardType type){
             this.name = initialName;
             this.imageLoc = initialImageLoc;
@@ -34,42 +36,42 @@ public class Card {
 		//placeholder
 	}
 	
-        /**
-         * Get the cards name
-         * @return 
-         *  The name of the card
-         */
+    /**
+     * Get the cards name
+     * @return 
+     *  The name of the card
+     */
 	public String getName() {
 		return name;
 	}
 
-        /**
-         * Set the cards name
-         * @param name 
-         *  The name to set the card to
-         * @postconidtion
-         *  The cards name is what's in the param name
-         */
+    /**
+     * Set the cards name
+     * @param name 
+     *  The name to set the card to
+     * @postcondition
+     *  The cards name is what's in the param name
+     */
 	void setName(String name) {
 		this.name = name;
 	}
 
-        /**
-         * Get the image location
-         * @return 
-         *  The image location
-         */
+    /**
+     * Get the image location
+     * @return 
+     *  The image location
+     */
 	public String getImageLoc() {
 		return imageLoc;
 	}
 
-        /**
-         * Set the imageLoc
-         * @param imageLoc 
-         *  The string to set image location to
-         * @postcondition
-         *  The imageLoc has been set to the parameter imageLoc
-         */
+    /**
+     * Set the imageLoc
+     * @param imageLoc 
+     *  The string to set image location to
+     * @postcondition
+     *  The imageLoc has been set to the parameter imageLoc
+     */
 	void setImageLoc(String imageLoc) {
 		this.imageLoc = imageLoc;
 	}

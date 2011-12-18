@@ -1,8 +1,9 @@
 package Cards;
 
-/*
+/**
  * This card will be the special event card when drawn from the cities deck
- *  
+ * @author - Max
+ * @course CIS 112 ONLN 
  */
 public class SpecialEventCard extends Card {
 	
@@ -10,18 +11,18 @@ public class SpecialEventCard extends Card {
 	private String description;
 	private DeckType deckType;
 
-        /**
-         * Constructs a SpecialEventCard
-         * @param initialImageLoc
-         *  The initial location of the image
-         * @param initialName 
-         *  The initial name of the special event card
-         * @param initialDescription 
-         *  The initial description of the special event card
-         * @postcondition
-         *  An SpecialEventCard has been constructed with 
-         *  intialImageLoc, initialName, and initialDescription
-         */
+    /**
+     * Constructs a SpecialEventCard
+     * @param initialImageLoc
+     *  The initial location of the image
+     * @param initialName 
+     *  The initial name of the special event card
+     * @param initialDescription 
+     *  The initial description of the special event card
+     * @postcondition
+     *  An SpecialEventCard has been constructed with 
+     *  intialImageLoc, initialName, and initialDescription
+     */
 	public SpecialEventCard(String initialImageLoc, String initialName, String initialDescription,
 			String cardName) 
 	{
@@ -31,9 +32,9 @@ public class SpecialEventCard extends Card {
 		this.cardName = cardName;
 	}
         
-        /**
-         * Plays this card
-         */
+    /**
+     * Plays this card
+     */
 	public void PlayCard(){
             //TODO code play card logic		
 	}
